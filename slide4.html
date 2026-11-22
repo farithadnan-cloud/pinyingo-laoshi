@@ -2,191 +2,243 @@
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Slaid Pengajaran Topik 4: Di Pejabat (在办公室) - PinyinGo Guru</title>
-  <!-- Tailwind CSS CDN -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topik 4: Di Pejabat & Rakan Sekerja • Slaid Pengajaran Guru</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+SC:wght@500;700;800;900&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            outfit: ['"Outfit"', 'sans-serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            hanzi: ['"Noto Sans SC"', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #0f172a;
-      color: #f8fafc;
-      overflow: hidden;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
     }
-    .font-outfit { font-family: 'Outfit', sans-serif; }
-    .font-hanzi { font-family: 'Noto Sans SC', sans-serif; }
-    ruby { ruby-align: center; ruby-position: over; }
-    rt {
-      font-size: 0.52em;
-      font-weight: 700;
-      color: #818cf8;
-      letter-spacing: 0.5px;
+    .font-outfit {
+      font-family: 'Outfit', sans-serif;
     }
-    .slide-screen {
-      transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+    .font-hanzi {
+      font-family: 'Noto Sans SC', sans-serif;
     }
-    .slide-enter {
-      opacity: 0;
-      transform: scale(0.98);
-    }
-    .slide-active {
-      opacity: 1;
-      transform: scale(1);
-    }
-    /* Custom button bounce */
-    .btn-action:active {
-      transform: scale(0.95);
-    }
-    /* Custom scrollbar */
-    .custom-scroll::-webkit-scrollbar {
+    .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
+      height: 6px;
     }
-    .custom-scroll::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.2);
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
       border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(99, 102, 241, 0.5);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(99, 102, 241, 0.8);
+    }
+    .drag-target-hover {
+      border-color: #38bdf8 !important;
+      background-color: rgba(56, 189, 248, 0.15) !important;
+      transform: scale(1.02);
+    }
+    .shake-anim {
+      animation: shake 0.4s ease-in-out;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
     }
   </style>
 </head>
-<body class="h-screen w-screen flex flex-col justify-between bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+<body class="bg-[#0b0f19] text-slate-100 min-h-screen flex flex-col justify-between select-none overflow-x-hidden">
 
-  <!-- ==================== TOP NAVIGATION BAR ==================== -->
-  <header class="w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 py-2.5 flex items-center justify-between z-40 shrink-0">
-    <!-- Brand / Topic Info -->
+  <!-- TOP BAR -->
+  <header class="h-14 border-b border-slate-800/80 bg-[#0d1322]/90 backdrop-blur px-4 sm:px-6 flex items-center justify-between shrink-0 z-20">
     <div class="flex items-center space-x-3">
-      <a href="index.html" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center justify-center text-sm font-bold transition shadow-xs" title="Kembali ke Portal Utama">
-        🏠
+      <a href="index.html" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition flex items-center space-x-1 text-xs font-bold" title="Kembali ke Senarai Topik">
+        <span>🏠</span>
+        <span class="hidden sm:inline">Papan Utama</span>
       </a>
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center text-white font-black text-lg shadow-md">
-        🏢
-      </div>
-      <div>
-        <div class="flex items-center space-x-2">
-          <span class="px-2 py-0.5 text-[10px] font-black rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider">
-            Slaid Guru • Topik 4
-          </span>
-          <h1 class="text-sm sm:text-base font-outfit font-black text-white tracking-tight">
-            Di Pejabat • <span class="font-hanzi text-indigo-300">在办公室</span>
-          </h1>
-        </div>
-        <p class="text-[11px] text-slate-400 font-semibold leading-tight">Zài bàngōngshì</p>
+      <div class="h-4 w-[1px] bg-slate-800 hidden sm:block"></div>
+      <div class="flex items-center space-x-2">
+        <span class="text-xs px-2 py-0.5 rounded font-black tracking-wider uppercase bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-500 text-white">
+          Slaid Guru • Topik 4
+        </span>
+        <h1 class="text-sm font-bold text-slate-200 hidden md:block">
+          Di Pejabat & Rakan Sekerja • <span class="font-hanzi text-amber-300">第四单元：在办公室</span>
+        </h1>
       </div>
     </div>
 
-    <!-- Quick Tools: Audio Speed, Fullscreen, Self-Learning Link -->
-    <div class="flex items-center space-x-2">
-      <!-- Voice Rate -->
-      <button onclick="toggleAudioSpeed()" class="h-8 px-2.5 rounded-full bg-slate-800 hover:bg-slate-700 text-indigo-300 border border-slate-700 flex items-center space-x-1 text-xs font-bold transition" title="Laras Kelajuan Suara Guru">
-        <span>🔊</span>
+    <!-- Controls -->
+    <div class="flex items-center space-x-2 sm:space-x-3">
+      <!-- Speed Toggle -->
+      <button onclick="toggleAudioSpeed()" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-xs font-bold text-slate-300 flex items-center space-x-1" title="Tukar Kelajuan Audio Sebutan">
+        <span>⚡</span>
         <span id="speed-badge">1.0x</span>
       </button>
-      <!-- Fullscreen button -->
-      <button onclick="toggleFullscreen()" class="h-8 px-3 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hidden sm:flex items-center space-x-1 text-xs font-bold transition" title="Skrin Penuh Projektor (Kekunci F)">
-        <span id="fs-icon">⛶</span>
-        <span class="text-[11px]">Skrin Penuh</span>
+
+      <!-- Fullscreen Toggle -->
+      <button onclick="toggleFullscreen()" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 text-xs font-bold text-slate-300 flex items-center space-x-1" title="Mod Skrin Penuh Projector">
+        <span>⛶</span>
+        <span class="hidden sm:inline">Skrin Penuh</span>
       </button>
-      <!-- Switch to Student Self-Learn Mode -->
-      <a href="topik4.html" class="h-8 px-3 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white flex items-center space-x-1.5 text-xs font-extrabold transition shadow-md shadow-emerald-900/30">
+
+      <!-- Student App Link -->
+      <a href="javascript:void(0)" onclick="window.open('http://' + window.location.hostname + ':8088/topik4.html', '_blank')" class="px-3 py-1 rounded-lg bg-emerald-600/90 hover:bg-emerald-500 text-white text-xs font-black flex items-center space-x-1 shadow-md transition" title="Buka Aplikasi Latihan Murid">
         <span>📱</span>
-        <span>Mod Kendiri Murid</span>
+        <span>Mod Latihan Murid</span>
       </a>
     </div>
   </header>
 
-  <!-- ==================== PROGRESS BAR ==================== -->
-  <div class="w-full bg-slate-900 h-1.5 shrink-0 relative overflow-hidden">
-    <div id="slide-progress" class="bg-gradient-to-r from-indigo-500 to-cyan-400 h-full transition-all duration-300" style="width: 12.5%;"></div>
+  <!-- PROGRESS BAR -->
+  <div class="w-full bg-slate-900 h-1">
+    <div id="slide-progress" class="h-full bg-gradient-to-r from-indigo-500 via-sky-400 to-emerald-400 transition-all duration-300" style="width: 8%;"></div>
   </div>
 
-  <!-- ==================== MAIN SLIDE STAGE ==================== -->
-  <main class="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-8 py-4 sm:py-6 flex items-center justify-center overflow-hidden relative">
-    
-    <!-- Slide Container (Dynamic) -->
-    <div id="slide-viewport" class="w-full h-full max-h-[82vh] bg-slate-900/95 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col justify-between slide-screen slide-active custom-scroll overflow-y-auto relative">
-      <!-- Injected by JavaScript -->
+  <!-- SLIDE CONTAINER -->
+  <main class="flex-1 flex flex-col justify-center items-center p-3 sm:p-5 relative overflow-y-auto custom-scrollbar">
+    <div id="slide-viewport" class="w-full max-w-6xl min-h-[500px] sm:min-h-[540px] lg:min-h-[580px] bg-[#111827]/90 border border-slate-800 rounded-2xl sm:rounded-3xl p-3 sm:p-5 lg:p-6 shadow-2xl relative flex flex-col justify-between overflow-hidden">
+      <!-- DYNAMIC CONTENT INJECTED HERE -->
+      <div id="slide-content" class="flex-1"></div>
     </div>
-
   </main>
 
-  <!-- ==================== BOTTOM CONTROLLER ==================== -->
-  <footer class="w-full bg-slate-900/90 backdrop-blur-md border-t border-slate-800 px-4 py-3 flex items-center justify-between z-40 shrink-0">
-    <!-- Left: Watermark & Keyboard Help -->
-    <div class="flex items-center space-x-3 text-xs text-slate-400 font-semibold">
-      <div class="flex items-center space-x-1.5 bg-slate-800/80 px-2.5 py-1 rounded-full border border-slate-700/80 text-[11px]">
-        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 inline-block"></span>
-        <span class="text-slate-300 font-bold">Hajar Nur Atiqah Binti Mohd Adam</span>
-      </div>
-      <span class="hidden md:inline text-slate-500 text-[11px]">Guna kekunci ⬅️ / ➔ atau Spacebar</span>
-    </div>
-
-    <!-- Center: Slide Indicator Pills -->
-    <div id="slide-dots" class="flex items-center space-x-1.5">
-      <!-- Dots generated by JS -->
-    </div>
-
-    <!-- Right: Navigation Buttons -->
+  <!-- BOTTOM BAR & NAVIGATION -->
+  <footer class="h-14 border-t border-slate-800/80 bg-[#0d1322]/90 backdrop-blur px-4 sm:px-6 flex items-center justify-between shrink-0 z-20">
+    <!-- Watermark KV Port Dickson -->
     <div class="flex items-center space-x-2">
-      <button onclick="prevSlide()" id="btn-prev" class="h-9 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-30 disabled:pointer-events-none text-slate-200 border border-slate-700 font-bold text-xs flex items-center space-x-1 btn-action transition">
-        <span>⬅️</span>
-        <span class="hidden sm:inline">Terdahulu</span>
-      </button>
-      <div class="px-2.5 py-1 rounded-xl bg-indigo-950/60 border border-indigo-800/60 text-indigo-300 font-outfit font-black text-xs">
-        <span id="slide-num-indicator">1 / 8</span>
+      <div class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
+      <div class="text-[11px] leading-tight text-slate-400 font-medium">
+        <div class="font-bold text-slate-300">Hajar Nur Atiqah Binti Mohd Adam</div>
+        <div class="text-[9px] uppercase tracking-wider text-slate-500 font-black">KOLEJ VOKASIONAL PORT DICKSON</div>
       </div>
-      <button onclick="nextSlide()" id="btn-next" class="h-9 px-5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-extrabold text-xs flex items-center space-x-1 shadow-md shadow-indigo-900/40 btn-action transition">
-        <span class="hidden sm:inline">Seterusnya</span>
-        <span>➔</span>
+    </div>
+
+    <!-- Dots Indicators -->
+    <div id="slide-dots" class="hidden md:flex items-center space-x-1.5 overflow-x-auto max-w-xs py-1"></div>
+
+    <!-- Prev / Next Buttons -->
+    <div class="flex items-center space-x-2">
+      <button id="btn-prev" onclick="prevSlide()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed text-xs font-bold text-slate-300 transition flex items-center space-x-1">
+        <span>⬅️</span>
+        <span>Terdahulu</span>
+      </button>
+      
+      <div id="slide-counter" class="text-xs font-mono font-bold text-slate-400 px-2">
+        1 / 12
+      </div>
+
+      <button id="btn-next" onclick="nextSlide()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-30 disabled:cursor-not-allowed text-xs font-black text-white transition flex items-center space-x-1 shadow-md shadow-indigo-600/30">
+        <span>Seterusnya</span>
+        <span>➡️</span>
       </button>
     </div>
   </footer>
 
-  <!-- WATERMARK (BOTTOM LEFT - AS REQUESTED) -->
-  <div class="fixed bottom-2.5 left-3 z-50 pointer-events-none select-none text-[11px] font-bold text-slate-400 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-700 shadow-xs flex items-center space-x-1.5">
-    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 inline-block"></span>
-    <span>Hajar Nur Atiqah Binti Mohd Adam</span>
-  </div>
-
-  <!-- ==================== JAVASCRIPT SLIDE ENGINE ==================== -->
+  <!-- DATA & JAVASCRIPT LOGIC -->
   <script>
-    const SLIDES = [{"type": "title", "tag": "TOPIK 4: DI PEJABAT", "hz": "第四单元：在办公室", "py": "Dì-sì dānyuán: Zài bàngōngshì", "objectives": ["Mengenal pasti alatan kerja pejabat, rakan sekerja, dan gelaran pengurus.", "Menguasai 6 kata arah kedudukan utama (atas, bawah, depan, belakang, dalam, sebelah).", "Membina ayat menyatakan lokasi alatan meja dan mencari staf di pejabat."], "banner": "📽️ Slaid Pengajaran Guru • Bilik Darjah & Projektor Pintar"}, {"type": "vocab_grid", "tag": "KOSA KATA BAHARU (生词一)", "subtitle": "Alatan & Warga Pejabat", "words": [{"hz": "办公室", "py": "bàngōngshì", "my": "pejabat", "type": "k.n"}, {"hz": "职员", "py": "zhíyuán", "my": "pekerja / staf", "type": "k.n"}, {"hz": "同事", "py": "tóngshì", "my": "rakan sekerja", "type": "k.n"}, {"hz": "经理", "py": "jīnglǐ", "my": "pengurus", "type": "k.n"}, {"hz": "座位", "py": "zuòwèi", "my": "tempat duduk", "type": "k.n"}, {"hz": "桌子", "py": "zhuōzi", "my": "meja", "type": "k.n"}, {"hz": "椅子", "py": "yǐzi", "my": "kerusi", "type": "k.n"}, {"hz": "电脑", "py": "diànnǎo", "my": "komputer", "type": "k.n"}, {"hz": "打印机", "py": "dǎyìnjī", "my": "mesin pencetak", "type": "k.n"}, {"hz": "柜子", "py": "guìzi", "my": "almari fail", "type": "k.n"}]}, {"type": "vocab_grid", "tag": "KOSA KATA BAHARU (生词二)", "subtitle": "6 Kata Arah Kedudukan (方位词)", "words": [{"hz": "前面", "py": "qiánmiàn", "my": "hadapan", "type": "k.n"}, {"hz": "后面", "py": "hòumiàn", "my": "belakang", "type": "k.n"}, {"hz": "上面", "py": "shàngmiàn", "my": "atas", "type": "k.n"}, {"hz": "下面", "py": "xiàmiàn", "my": "bawah", "type": "k.n"}, {"hz": "里面", "py": "lǐmiàn", "my": "dalam", "type": "k.n"}, {"hz": "旁边", "py": "pángbiān", "my": "sebelah / tepi", "type": "k.n"}, {"hz": "文具", "py": "wénjù", "my": "alat tulis", "type": "k.n"}, {"hz": "电话", "py": "diànhuà", "my": "telefon", "type": "k.n"}, {"hz": "在", "py": "zài", "my": "berada di", "type": "k.k"}, {"hz": "哪儿", "py": "nǎr", "my": "di mana", "type": "k.g"}]}, {"type": "grammar", "tag": "RUMUS & POLA AYAT (语法 & 句型)", "title": "Formula Kedudukan Alatan Pejabat", "patterns": [{"formula": "Kata Nama + 在 + 哪儿？", "explain": "Formula bertanyakan lokasi sesuatu objek atau individu.", "exampleHz": "我的座位在哪儿？", "examplePy": "Wǒ de zuòwèi zài nǎr?", "exampleMy": "Tempat duduk saya berada di mana?"}, {"formula": "Objek A + 在 + Rujukan B 的 + [Arah/Kedudukan]", "explain": "Menyatakan kedudukan objek secara tepat.", "exampleHz": "电脑在桌子上面。", "examplePy": "Diànnǎo zài zhuōzi shàngmiàn.", "exampleMy": "Komputer berada di atas meja."}, {"formula": "Subjek + 在 / 不在", "explain": "Menyatakan kehadiran staf di pejabat.", "exampleHz": "王经理在办公室吗？", "examplePy": "Wáng jīnglǐ zài bàngōngshì ma?", "exampleMy": "Adakah Pengurus Wang ada di pejabat?"}]}, {"type": "dialogue", "tag": "TEKS DIALOG 1 (对话一)", "title": "新的职员 (Pekerja Baharu Masuk Pejabat)", "lines": [{"speaker": "哈山 (Hasan)", "hz": "您好！我叫哈山。我是新的职员。", "py": "Nín hǎo! Wǒ jiào Hāshān. Wǒ shì xīn de zhíyuán.", "my": "Helo! Nama saya Hasan. Saya pekerja baharu."}, {"speaker": "李强 (Li Qiang)", "hz": "你好，哈山！请进，欢迎你！", "py": "Nǐ hǎo, Hāshān! Qǐng jìn, huānyíng nǐ!", "my": "Helo Hasan! Sila masuk, selamat datang!"}, {"speaker": "哈山 (Hasan)", "hz": "请问我的座位在哪儿？", "py": "Qǐngwèn wǒ de zuòwèi zài nǎr?", "my": "Tumpang tanya, tempat duduk saya di mana?"}, {"speaker": "李强 (Li Qiang)", "hz": "你的座位在前面，李强的后面。", "py": "Nǐ de zuòwèi zài qiánmiàn, Lǐ Qiáng de hòumiàn.", "my": "Tempat duduk awak di depan, di belakang Li Qiang."}]}, {"type": "dialogue", "tag": "TEKS DIALOG 2 (对话二)", "title": "王经理在吗？(Mencari Pengurus Pejabat)", "lines": [{"speaker": "访客 (Pelawat)", "hz": "请问王经理在办公室吗？", "py": "Qǐngwèn Wáng jīnglǐ zài bàngōngshì ma?", "my": "Tumpang tanya, adakah Pengurus Wang ada di pejabat?"}, {"speaker": "职员 (Staf)", "hz": "他不在，他在会议室开会。", "py": "Tā bú zài, tā zài huìyìshì kāihuì.", "my": "Beliau tiada, beliau sedang bermesyuarat di bilik mesyuarat."}, {"speaker": "访客 (Pelawat)", "hz": "打印机在哪里？我想复印文件。", "py": "Dǎyìnjī zài nǎlǐ? Wǒ xiǎng fùyìn wénjiàn.", "my": "Di manakah mesin pencetak? Saya mahu fotostat dokumen."}, {"speaker": "职员 (Staf)", "hz": "打印机在柜子的旁边。", "py": "Dǎyìnjī zài guìzi de pángbiān.", "my": "Mesin pencetak berada di sebelah almari fail."}]}, {"type": "class_activity", "tag": "AKTIVITI INTERAKTIF KELAS (课堂互动)", "title": "Di Mana Kedudukannya? (Arah Pejabat)", "questions": [{"q": "1. Apakah maksud '后面 (hòumiàn)' dan '前面 (qiánmiàn)'?", "a": "后面 = Belakang, 前面 = Depan."}, {"q": "2. Bagaimana menyatakan 'Komputer di atas meja'?", "a": "电脑在桌子上面。 (Diànnǎo zài zhuōzi shàngmiàn.)"}, {"q": "3. Jika mesin fotostat di sebelah almari, bagaimana membina ayatnya?", "a": "打印机在柜子旁边。 (Dǎyìnjī zài guìzi pángbiān.)"}, {"q": "4. Apakah jawapan jika staf 'tiada di pejabat'?", "a": "他不在办公室。 (Tā bú zài bàngōngshì.)"}]}, {"type": "summary", "tag": "RUMUSAN KELAS & TUGASAN KENDIRI", "title": "Tahniah! Selesai Pembelajaran Topik 4", "points": ["Murid menguasai kosa kata persekitaran tempat kerja dan etika pejabat.", "Murid mahir menerangkan kedudukan menggunakan 6 kata arah utama.", "Sila sambung latihan kendiri di portal PinyinGo!"], "selfLearnUrl": "topik4.html"}];
+    const SLIDES = [{"type": "title", "tag": "TOPIK 4: DI PEJABAT & RAKAN SEKERJA", "hz": "第四单元：在办公室", "py": "Dì-sì dānyuán: Zài bàngōngshì", "situation": "Situasi memperkenalkan staf baharu, urusan mencetak dokumen dan mencari pengurus di pejabat.", "emoji": "💼", "objectives": ["Mengenal, membaca dan menyebut semua perkataan baharu (生词) dengan tanda nada yang tepat.", "Memahami maksud Bahasa Melayu bagi setiap perkataan baharu tanpa sebarang kekeliruan.", "Menggunakan perkataan baharu dalam membina dan menyusun struktur ayat yang betul.", "Menguasai fokus bahasa (语言重点) dan formula tatabahasa secara menyeluruh.", "Membaca, melakonkan dan memahami dialog (对话) situasi sebenar dengan lancar.", "Menjawab soalan kefahaman berdasarkan situasi dan maklumat dialog."]}, {"type": "vocab_interactive", "tag": "生词 SHĒNGCÍ • KOSA KATA BAHARU (KUMPULAN 1)", "subtitle": "Perkataan 1 hingga 8 • Klik perkataan untuk mendengar sebutan & contoh ayat", "words": [{"hz": "新", "py": "xīn", "my": "baru", "type": "adjektif", "exHz": "他是办公室的新职员。", "exPy": "Tā shì bàngōngshì de xīn zhíyuán.", "exMy": "Dia ialah staf baharu pejabat.", "emoji": "✨", "bg": "from-amber-400/20 to-yellow-500/20", "border": "border-amber-400/40"}, {"hz": "职员", "py": "zhí yuán", "my": "pekerja / staf", "type": "kata nama", "exHz": "新职员林华今天报到。", "exPy": "Xīn zhíyuán Lín Huá jīntiān bàodào.", "exMy": "Pekerja baharu Lin Hua melapor diri hari ini.", "emoji": "💼", "bg": "from-cyan-500/20 to-blue-600/20", "border": "border-cyan-500/40"}, {"hz": "同事", "py": "tóng shì", "my": "rakan sekerja", "type": "kata nama", "exHz": "新同事的座位在前面。", "exPy": "Xīn tóngshì de zuòwèi zài qiánmiàn.", "exMy": "Tempat duduk rakan sekerja baharu di hadapan.", "emoji": "🧑‍💼", "bg": "from-blue-500/20 to-indigo-600/20", "border": "border-blue-500/40"}, {"hz": "座位", "py": "zuò wèi", "my": "tempat duduk", "type": "kata nama", "exHz": "我的座位在王经理旁边。", "exPy": "Wǒ de zuòwèi zài Wáng jīnglǐ pángbiān.", "exMy": "Tempat duduk saya di sebelah Pengurus Wang.", "emoji": "💺", "bg": "from-blue-500/20 to-indigo-600/20", "border": "border-blue-500/40"}, {"hz": "前面", "py": "qián miàn", "my": "bahagian depan", "type": "kata arah", "exHz": "往前面直走两百米。", "exPy": "Wǎng qiánmiàn zhí zǒu liǎngbǎi mǐ.", "exMy": "Jalan lurus ke hadapan 200 meter.", "emoji": "👉", "bg": "from-emerald-500/20 to-teal-600/20", "border": "border-emerald-500/40"}, {"hz": "后面", "py": "hòu miàn", "my": "bahagian belakang", "type": "kata arah", "exHz": "停车场在银行后面。", "exPy": "Tíngchēchǎng zài yínháng hòumiàn.", "exMy": "Tempat letak kereta di belakang bank.", "emoji": "👈", "bg": "from-purple-500/20 to-violet-600/20", "border": "border-purple-500/40"}, {"hz": "里面", "py": "lǐ miàn", "my": "bahagian dalam", "type": "kata arah", "exHz": "文件夹在抽屉里面。", "exPy": "Wénjiànjiā zài chōuti lǐmiàn.", "exMy": "Fail dokumen berada di dalam laci.", "emoji": "📦", "bg": "from-amber-600/20 to-stone-700/20", "border": "border-amber-600/40"}, {"hz": "上面", "py": "shàng miàn", "my": "bahagian atas", "type": "kata arah", "exHz": "电脑在桌子上面。", "exPy": "Diànnǎo zài zhuōzi shàngmiàn.", "exMy": "Komputer berada di atas meja.", "emoji": "⬆️", "bg": "from-blue-500/20 to-cyan-600/20", "border": "border-blue-500/40"}], "groupNum": 1}, {"type": "vocab_interactive", "tag": "生词 SHĒNGCÍ • KOSA KATA BAHARU (KUMPULAN 2)", "subtitle": "Perkataan 9 hingga 16 • Klik perkataan untuk mendengar sebutan & contoh ayat", "words": [{"hz": "下面", "py": "xià miàn", "my": "bahagian bawah", "type": "kata arah", "exHz": "垃圾桶在桌子下面。", "exPy": "Lājītǒng zài zhuōzi xiàmiàn.", "exMy": "Tong sampah berada di bawah meja.", "emoji": "⬇️", "bg": "from-indigo-500/20 to-blue-600/20", "border": "border-indigo-500/40"}, {"hz": "旁边", "py": "páng biān", "my": "sebelah / tepi", "type": "kata arah", "exHz": "消防局在医院旁边。", "exPy": "Xiāofángjú zài yīyuàn pángbiān.", "exMy": "Balai bomba di sebelah hospital.", "emoji": "↔️", "bg": "from-teal-500/20 to-cyan-600/20", "border": "border-teal-500/40"}, {"hz": "桌子", "py": "zhuō zi", "my": "meja", "type": "kata nama", "exHz": "电脑在桌子上面。", "exPy": "Diànnǎo zài zhuōzi shàngmiàn.", "exMy": "Komputer di atas meja.", "emoji": "🖥️", "bg": "from-amber-600/20 to-stone-700/20", "border": "border-amber-600/40"}, {"hz": "椅子", "py": "yǐ zi", "my": "kerusi", "type": "kata nama", "exHz": "请坐在椅子上。", "exPy": "Qǐng zuò zài yǐzi shàng.", "exMy": "Sila duduk di atas kerusi.", "emoji": "🪑", "bg": "from-emerald-500/20 to-teal-600/20", "border": "border-emerald-500/40"}, {"hz": "柜子", "py": "guì zi", "my": "almari", "type": "kata nama", "exHz": "文件放在铁柜子里面。", "exPy": "Wénjiàn fàng zài tiě guìzi lǐmiàn.", "exMy": "Dokumen diletakkan di dalam almari besi.", "emoji": "🗄️", "bg": "from-stone-500/20 to-stone-700/20", "border": "border-stone-500/40"}, {"hz": "文具", "py": "wén jù", "my": "alat tulis", "type": "kata nama", "exHz": "办公室里有各种文具。", "exPy": "Bàngōngshì lǐ yǒu gè zhǒng wénjù.", "exMy": "Di pejabat ada pelbagai alat tulis.", "emoji": "✏️", "bg": "from-amber-500/20 to-orange-600/20", "border": "border-amber-500/40"}, {"hz": "电脑", "py": "diàn nǎo", "my": "komputer / laptop", "type": "kata nama", "exHz": "我在用电脑写报告。", "exPy": "Wǒ zài yòng diànnǎo xiě bàogào.", "exMy": "Saya sedang menggunakan komputer menulis laporan.", "emoji": "💻", "bg": "from-sky-500/20 to-blue-600/20", "border": "border-sky-500/40"}, {"hz": "打印机", "py": "dǎ yìn jī", "my": "mesin cetak (printer)", "type": "kata nama", "exHz": "打印机在柜子旁边。", "exPy": "Dǎyìnjī zài guìzi pángbiān.", "exMy": "Mesin pencetak di sebelah almari.", "emoji": "🖨️", "bg": "from-indigo-500/20 to-purple-600/20", "border": "border-indigo-500/40"}], "groupNum": 2}, {"type": "vocab_interactive", "tag": "生词 SHĒNGCÍ • KOSA KATA BAHARU (KUMPULAN 3)", "subtitle": "Perkataan 17 hingga 23 • Kosa Kata Lengkap", "words": [{"hz": "复印机", "py": "fù yìn jī", "my": "mesin fotostat", "type": "kata nama", "exHz": "请帮我用复印机印这份文件。", "exPy": "Qǐng bāng wǒ yòng fùyìnjī yìn zhè fèn wénjiàn.", "exMy": "Tolong bantu saya gunakan mesin fotostat salin fail ini.", "emoji": "🖨️", "bg": "from-indigo-500/20 to-purple-600/20", "border": "border-indigo-500/40"}, {"hz": "文件夹", "py": "wén jiàn jiā", "my": "fail dokumen", "type": "kata nama", "exHz": "蓝色的是客户文件夹。", "exPy": "Lánsè de shì kèhù wénjiànjiā.", "exMy": "Yang berwarna biru ialah fail folder pelanggan.", "emoji": "📁", "bg": "from-yellow-500/20 to-amber-600/20", "border": "border-yellow-500/40"}, {"hz": "拿", "py": "ná", "my": "ambil", "type": "kata kerja", "exHz": "请帮我拿那份报告。", "exPy": "Qǐng bāng wǒ ná nà fèn bàogào.", "exMy": "Tolong bantu saya ambilkan laporan itu.", "emoji": "🤲", "bg": "from-teal-500/20 to-emerald-600/20", "border": "border-teal-500/40"}, {"hz": "经理", "py": "jīng lǐ", "my": "pengurus", "type": "kata nama", "exHz": "面试官是公司的部门经理。", "exPy": "Miànshìguān shì gōngsī de bùmén jīnglǐ.", "exMy": "Pegawai temuduga ialah pengurus jabatan syarikat.", "emoji": "👔", "bg": "from-slate-600/20 to-slate-800/20", "border": "border-slate-500/40"}, {"hz": "在", "py": "zài", "my": "ada (di tempatnya) / di", "type": "kata kerja", "exHz": "请问王经理在吗？", "exPy": "Qǐngwèn Wáng jīnglǐ zài ma?", "exMy": "Tumpang tanya adakah Pengurus Wang ada?", "emoji": "📍", "bg": "from-red-500/20 to-rose-600/20", "border": "border-red-500/40"}, {"hz": "事", "py": "shì", "my": "perkara / hal", "type": "kata nama", "exHz": "你找经理有什么事吗？", "exPy": "Nǐ zhǎo jīnglǐ yǒu shénme shì ma?", "exMy": "Awak cari pengurus ada urusan apa?", "emoji": "📋", "bg": "from-cyan-500/20 to-blue-600/20", "border": "border-cyan-500/40"}, {"hz": "打电话", "py": "dǎ diàn huà", "my": "menelefon", "type": "kata kerja", "exHz": "经理在办公室打电话。", "exPy": "Jīnglǐ zài bàngōngshì dǎ diànhuà.", "exMy": "Pengurus sedang membuat panggilan telefon di pejabat.", "emoji": "📞", "bg": "from-emerald-500/20 to-teal-600/20", "border": "border-emerald-500/40"}], "groupNum": 3}, {"type": "game_match_drag", "tag": "GAMIFIKASI • GAME 1: DRAG & DROP GAMBAR (连线游戏)", "title": "Padankan Gambar dengan Aksara Hanzi & Pinyin yang Tepat", "subtitle": "Aktiviti Seret & Lepas (Drag & Drop): Seret atau klik kad perkataan di bawah ke dalam petak gambar yang sepadan (10 Soalan).", "items": [{"hz": "电脑", "py": "diànnǎo", "my": "Komputer", "emoji": "💻", "color": "from-blue-500/20 to-cyan-600/20", "border": "border-blue-500/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><rect x=\"12\" y=\"14\" width=\"40\" height=\"36\" rx=\"8\" fill=\"#3B82F6\"/><rect x=\"18\" y=\"20\" width=\"28\" height=\"24\" rx=\"4\" fill=\"#06B6D4\" opacity=\"0.7\"/></svg>"}, {"hz": "复印机", "py": "fùyìnjī", "my": "Mesin Fotostat", "emoji": "🖨️", "color": "from-indigo-500/20 to-violet-600/20", "border": "border-indigo-500/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><rect x=\"12\" y=\"14\" width=\"40\" height=\"36\" rx=\"8\" fill=\"#6366F1\"/><rect x=\"18\" y=\"20\" width=\"28\" height=\"24\" rx=\"4\" fill=\"#7C3AED\" opacity=\"0.7\"/></svg>"}, {"hz": "办公桌", "py": "bàngōngzhuō", "my": "Meja Pejabat", "emoji": "🖥️", "color": "from-amber-600/20 to-stone-700/20", "border": "border-amber-600/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><rect x=\"12\" y=\"14\" width=\"40\" height=\"36\" rx=\"8\" fill=\"#D97706\"/><rect x=\"18\" y=\"20\" width=\"28\" height=\"24\" rx=\"4\" fill=\"#78350F\" opacity=\"0.7\"/></svg>"}, {"hz": "椅子", "py": "yǐzi", "my": "Kerusi", "emoji": "🪑", "color": "from-emerald-500/20 to-teal-600/20", "border": "border-emerald-500/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><rect x=\"12\" y=\"14\" width=\"40\" height=\"36\" rx=\"8\" fill=\"#10B981\"/><rect x=\"18\" y=\"20\" width=\"28\" height=\"24\" rx=\"4\" fill=\"#0F766E\" opacity=\"0.7\"/></svg>"}, {"hz": "经理", "py": "jīnglǐ", "my": "Pengurus", "emoji": "👔", "color": "from-slate-600/20 to-slate-800/20", "border": "border-slate-500/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><circle cx=\"32\" cy=\"32\" r=\"24\" fill=\"#475569\"/><circle cx=\"32\" cy=\"32\" r=\"16\" fill=\"#1E293B\" opacity=\"0.6\"/></svg>"}, {"hz": "职员", "py": "zhíyuán", "my": "Staf Pejabat", "emoji": "💼", "color": "from-cyan-500/20 to-blue-600/20", "border": "border-cyan-500/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><circle cx=\"32\" cy=\"32\" r=\"24\" fill=\"#06B6D4\"/><circle cx=\"32\" cy=\"32\" r=\"16\" fill=\"#1D4ED8\" opacity=\"0.6\"/></svg>"}, {"hz": "会议室", "py": "huìyìshì", "my": "Bilik Mesyuarat", "emoji": "🚪", "color": "from-violet-500/20 to-purple-700/20", "border": "border-violet-500/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><rect x=\"12\" y=\"14\" width=\"40\" height=\"36\" rx=\"8\" fill=\"#8B5CF6\"/><rect x=\"18\" y=\"20\" width=\"28\" height=\"24\" rx=\"4\" fill=\"#6D28D9\" opacity=\"0.7\"/></svg>"}, {"hz": "抽屉", "py": "chōuti", "my": "Laci Meja", "emoji": "🗄️", "color": "from-stone-500/20 to-amber-700/20", "border": "border-stone-500/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><rect x=\"12\" y=\"14\" width=\"40\" height=\"36\" rx=\"8\" fill=\"#78716C\"/><rect x=\"18\" y=\"20\" width=\"28\" height=\"24\" rx=\"4\" fill=\"#B45309\" opacity=\"0.7\"/></svg>"}, {"hz": "文具", "py": "wénjù", "my": "Alat Tulis", "emoji": "✏️", "color": "from-amber-500/20 to-orange-600/20", "border": "border-amber-500/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><rect x=\"12\" y=\"14\" width=\"40\" height=\"36\" rx=\"8\" fill=\"#F59E0B\"/><rect x=\"18\" y=\"20\" width=\"28\" height=\"24\" rx=\"4\" fill=\"#C2410C\" opacity=\"0.7\"/></svg>"}, {"hz": "电话", "py": "diànhuà", "my": "Telefon", "emoji": "☎️", "color": "from-rose-500/20 to-red-600/20", "border": "border-rose-500/40", "svg": "<svg class=\"w-12 h-12\" viewBox=\"0 0 64 64\" fill=\"none\"><circle cx=\"32\" cy=\"32\" r=\"24\" fill=\"#F43F5E\"/><circle cx=\"32\" cy=\"32\" r=\"16\" fill=\"#B91C1C\" opacity=\"0.6\"/></svg>"}]}, {"type": "game_listen", "tag": "GAMIFIKASI • GAME 2: DENGAR & TEKA (听音辨词)", "title": "Dengar Sebutan Audio & Pilih Perkataan Yang Tepat", "subtitle": "Klik butang audio untuk mendengar sebutan penutur jati, kemudian pilih jawapan perkataan yang tepat (10 Soalan).", "items": [{"num": 1, "hz": "新", "py": "xīn", "my": "baru", "options": [{"hz": "新", "py": "xīn", "my": "baru", "correct": true}, {"hz": "职员", "py": "zhí yuán", "my": "pekerja / staf", "correct": false}, {"hz": "前面", "py": "qián miàn", "my": "bahagian depan", "correct": false}]}, {"num": 2, "hz": "职员", "py": "zhí yuán", "my": "pekerja / staf", "options": [{"hz": "同事", "py": "tóng shì", "my": "rakan sekerja", "correct": false}, {"hz": "职员", "py": "zhí yuán", "my": "pekerja / staf", "correct": true}, {"hz": "后面", "py": "hòu miàn", "my": "bahagian belakang", "correct": false}]}, {"num": 3, "hz": "同事", "py": "tóng shì", "my": "rakan sekerja", "options": [{"hz": "座位", "py": "zuò wèi", "my": "tempat duduk", "correct": false}, {"hz": "里面", "py": "lǐ miàn", "my": "bahagian dalam", "correct": false}, {"hz": "同事", "py": "tóng shì", "my": "rakan sekerja", "correct": true}]}, {"num": 4, "hz": "座位", "py": "zuò wèi", "my": "tempat duduk", "options": [{"hz": "座位", "py": "zuò wèi", "my": "tempat duduk", "correct": true}, {"hz": "前面", "py": "qián miàn", "my": "bahagian depan", "correct": false}, {"hz": "上面", "py": "shàng miàn", "my": "bahagian atas", "correct": false}]}, {"num": 5, "hz": "前面", "py": "qián miàn", "my": "bahagian depan", "options": [{"hz": "后面", "py": "hòu miàn", "my": "bahagian belakang", "correct": false}, {"hz": "前面", "py": "qián miàn", "my": "bahagian depan", "correct": true}, {"hz": "下面", "py": "xià miàn", "my": "bahagian bawah", "correct": false}]}, {"num": 6, "hz": "后面", "py": "hòu miàn", "my": "bahagian belakang", "options": [{"hz": "里面", "py": "lǐ miàn", "my": "bahagian dalam", "correct": false}, {"hz": "旁边", "py": "páng biān", "my": "sebelah / tepi", "correct": false}, {"hz": "后面", "py": "hòu miàn", "my": "bahagian belakang", "correct": true}]}, {"num": 7, "hz": "里面", "py": "lǐ miàn", "my": "bahagian dalam", "options": [{"hz": "里面", "py": "lǐ miàn", "my": "bahagian dalam", "correct": true}, {"hz": "上面", "py": "shàng miàn", "my": "bahagian atas", "correct": false}, {"hz": "桌子", "py": "zhuō zi", "my": "meja", "correct": false}]}, {"num": 8, "hz": "上面", "py": "shàng miàn", "my": "bahagian atas", "options": [{"hz": "下面", "py": "xià miàn", "my": "bahagian bawah", "correct": false}, {"hz": "上面", "py": "shàng miàn", "my": "bahagian atas", "correct": true}, {"hz": "椅子", "py": "yǐ zi", "my": "kerusi", "correct": false}]}, {"num": 9, "hz": "下面", "py": "xià miàn", "my": "bahagian bawah", "options": [{"hz": "旁边", "py": "páng biān", "my": "sebelah / tepi", "correct": false}, {"hz": "柜子", "py": "guì zi", "my": "almari", "correct": false}, {"hz": "下面", "py": "xià miàn", "my": "bahagian bawah", "correct": true}]}, {"num": 10, "hz": "旁边", "py": "páng biān", "my": "sebelah / tepi", "options": [{"hz": "旁边", "py": "páng biān", "my": "sebelah / tepi", "correct": true}, {"hz": "桌子", "py": "zhuō zi", "my": "meja", "correct": false}, {"hz": "文具", "py": "wén jù", "my": "alat tulis", "correct": false}]}]}, {"type": "gamification_quiz", "tag": "GAMIFIKASI • GAME 3: KUIZ INTERAKTIF", "title": "Cabaran Kuiz Interaktif (10 Soalan)", "subtitle": "Soalan objektif aneka pilihan berasaskan situasi pembelajaran untuk menguji kefahaman pelajar.", "questions": [{"q": "Apakah maksud perkataan '职员 (zhíyuán)' ?:", "options": ["Staf / Pekerja pejabat", "Pelanggan", "Pemandu", "Doktor"], "ans": 0, "hint": "职员 (staf pejabat)."}, {"q": "Apakah maksud perkataan '经理 (jīnglǐ)' ?:", "options": ["Pengurus", "Pegawai keselamatan", "Kerani kaunter", "Guru besar"], "ans": 0, "hint": "经理 (pengurus)."}, {"q": "Apakah maksud perkataan '座位 (zuòwèi)' ?:", "options": ["Tempat duduk", "Meja mesyuarat", "Pintu masuk", "Bilik rehat"], "ans": 0, "hint": "座位 (tempat duduk)."}, {"q": "Apakah maksud perkataan peralatan pejabat '复印机 (fùyìnjī)' ?:", "options": ["Mesin fotostat", "Komputer riba", "Telefon pejabat", "Mesin faks"], "ans": 0, "hint": "复印机 (mesin fotostat)."}, {"q": "Berdasarkan Pola Tatabahasa , apakah maksud ayat '电脑在桌子上面'?:", "options": ["Komputer berada di atas meja", "Komputer berada di bawah meja", "Komputer berada di dalam laci", "Komputer di belakang kerusi"], "ans": 0, "hint": "桌子上面 (di atas meja)."}, {"q": "Apakah maksud penanda arah '前面 (qiánmiàn)' dan '后面 (hòumiàn)' ?:", "options": ["Di hadapan dan di belakang", "Di atas dan di bawah", "Di dalam dan di luar", "Di kiri dan di kanan"], "ans": 0, "hint": "前面 (depan), 后面 (belakang)."}, {"q": "Berdasarkan Ayat Pembelajaran Pembelajaran '文具在桌子里面'，perkataan '文具 (wénjù)' bermaksud apa?:", "options": ["Alat tulis", "Kertas cetakan", "Buku teks", "Cop pejabat"], "ans": 0, "hint": "文具 (alat tulis)."}, {"q": "Berdasarkan Dialog, siapakah staf baharu yang melapor diri di pejabat?:", "options": ["林华 (Lin Hua)", "艾曼 (Aiman)", "李强 (Li Qiang)", "木都 (Mu Du)"], "ans": 0, "hint": "林华: 我是新职员林华。"}, {"q": "Berdasarkan Ayat Pembelajaran Pembelajaran , ke manakah pengurus pergi untuk urusan kerja?:", "options": ["去吉隆坡出差 (Outstation ke KL)", "去新加坡旅游", "Balik ke rumah", "Makan di restoran"], "ans": 0, "hint": "经理要去吉隆坡出差。"}, {"q": "Apakah maksud frasa '在会议室开会' ?:", "options": ["Sedang bermesyuarat di bilik mesyuarat", "Sedang berehat di pantri", "Sedang menunggu pelanggan", "Sedang menandatangani surat"], "ans": 0, "hint": "会议室 (bilik mesyuarat) + 开会 (mesyuarat)."}]}, {"type": "grammar_combined", "tag": "语言重点 YǓYÁN ZHÒNGDIǍN • FOKUS BAHASA", "title": "Pola Ayat Utama & Struktur Tatabahasa", "subtitle": "Kuasai formula tatabahasa Mandarin untuk membina ayat yang tepat dalam perbualan seharian.", "patterns": [{"formula": "Kata Nama + 在 + 哪儿？", "explain": "Formula bertanyakan lokasi sesuatu objek atau individu.", "exampleHz": "我的座位在哪儿？", "examplePy": "Wǒ de zuòwèi zài nǎr?", "exampleMy": "Tempat duduk saya berada di mana?"}, {"formula": "Objek A + 在 + Rujukan B 的 + [Arah/Kedudukan]", "explain": "Menyatakan kedudukan objek secara tepat.", "exampleHz": "电脑在桌子上面。", "examplePy": "Diànnǎo zài zhuōzi shàngmiàn.", "exampleMy": "Komputer berada di atas meja."}, {"formula": "Subjek + 在 / 不在", "explain": "Menyatakan kehadiran staf di pejabat.", "exampleHz": "王经理在办公室吗？", "examplePy": "Wáng jīnglǐ zài bàngōngshì ma?", "exampleMy": "Adakah Pengurus Wang ada di pejabat?"}]}, {"type": "sentence_practice", "tag": "句子练习 JÙZI LIÀNXÍ • LATIHAN AYAT (10 SOALAN)", "title": "Latihan Menyusun & Membina Pola Ayat (Soalan 1 - 10)", "subtitle": "Pelajar mencuba membina ayat mengikut formula tatabahasa. Guru boleh mendedahkan skema jawapan dan audio rasmi.", "items": [{"num": 1, "formula": "Benda + 在 + Tempat + Arah", "targetMy": "Komputer berada di atas meja.", "explain": "电脑在桌子上面。(Diànnǎo zài zhuōzi shàngmiàn.)", "audioText": "电脑在桌子上面。"}, {"num": 2, "formula": "Benda + 在 + Tempat + Arah", "targetMy": "Alat tulis berada di dalam laci.", "explain": "文具在抽屉里面。(Wénjù zài chōuti lǐmiàn.)", "audioText": "文具在抽屉里面。"}, {"num": 3, "formula": "Peralatan + 在 + Bilik + Arah", "targetMy": "Mesin fotostat berada di sebelah bilik mesyuarat.", "explain": "复印机在会议室旁边。(Fùyìnjī zài huìyìshì pángbiān.)", "audioText": "复印机在会议室旁边。"}, {"num": 4, "formula": "Tempat Duduk + 在 + Tempat + Arah", "targetMy": "Tempat duduk awak berada di hadapan bilik pejabat pengurus.", "explain": "你的座位在经理办公室前面。(Nǐ de zuòwèi zài jīnglǐ bàngōngshì qiánmiàn.)", "audioText": "你的座位在经理办公室前面。"}, {"num": 5, "formula": "Subjek + 是 + Jawatan", "targetMy": "Saya adalah staf baharu yang melapor diri hari ini.", "explain": "我是今天报到的新职员。(Wǒ shì jīntiān bàodào de xīn zhíyuán.)", "audioText": "我是今天报到的新职员。"}, {"num": 6, "formula": "Orang + 在 + Tempat + Aktiviti", "targetMy": "Pengurus sedang bermesyuarat di dalam bilik mesyuarat.", "explain": "经理在会议室开会。(Jīnglǐ zài huìyìshì kāihuì.)", "audioText": "经理在会议室开会。"}, {"num": 7, "formula": "Benda + 在 + Tempat + Arah", "targetMy": "Kerusi berada di bawah meja.", "explain": "椅子在桌子下面。(Yǐzi zài zhuōzi xiàmiàn.)", "audioText": "椅子在桌子下面。"}, {"num": 8, "formula": "Benda + 在哪儿？", "targetMy": "Di manakah letaknya telefon pejabat?", "explain": "电话在哪儿？(Diànhuà zài nǎr?)", "audioText": "电话在哪儿？"}, {"num": 9, "formula": "Bilik + 在 + Tempat + Arah", "targetMy": "Tandas berada di belakang bilik rehat.", "explain": "洗手间在后面。(Xǐshǒujiān zài hòumiàn.)", "audioText": "洗手间在后面。"}, {"num": 10, "formula": "Subjek + 在 + Tempat + Bekerja", "targetMy": "Kami bekerja di dalam pejabat ini.", "explain": "我们在办公室工作。(Wǒmen zài bàngōngshì gōngzuò.)", "audioText": "我们在办公室工作。"}]}, {"type": "dialogue_full", "tag": "对话 TEKS DIALOG LENGKAP", "title": "Teks Dialog Penuh: 第四单元：在办公室 (Dì-sì dānyuán: Zài bàngōngshì)", "subtitle": "Teks dialog verbatim daripada Modul ELM 4322. Maksud Bahasa Melayu boleh dibuka menggunakan butang pilihan di atas.", "dialogues": [{"title": "对话（一）：新的职员", "subtitle": "Halaman 49 • Melapor Diri di Pejabat", "speakerA": "小明 (Xiǎomíng)", "speakerB": "哈山 (Hāshān)", "lines": [{"speaker": "哈山", "hz": "您好！我叫哈山。我是新的职员。", "py": "Nín hǎo! Wǒ jiào Hāshān. Wǒ shì xīn de zhíyuán.", "my": "Helo! Nama saya Hasan. Saya staf baharu."}, {"speaker": "小明", "hz": "您好！我叫小明，我是您的同事。", "py": "Nín hǎo! Wǒ jiào Xiǎomíng, wǒ shì nín de tóngshì.", "my": "Helo! Nama saya Xiaoming, saya rakan sekerja anda."}, {"speaker": "哈山", "hz": "请问，我的座位在哪儿？", "py": "Qǐngwèn, wǒ de zuòwèi zài nǎr?", "my": "Tumpang tanya, tempat duduk saya di mana?"}, {"speaker": "小明", "hz": "你的座位在我的前面。你的桌子上面有文具和电脑。", "py": "Nǐ de zuòwèi zài wǒ de qiánmiàn. Nǐ de zhuōzi shàngmiàn yǒu wénjù hé diànnǎo.", "my": "Tempat duduk awak di hadapan saya. Atas meja awak ada alat tulis dan komputer."}, {"speaker": "哈山", "hz": "请问，打印机和复印机在哪儿？", "py": "Qǐngwèn, dǎyìnjī hé fùyìnjī zài nǎr?", "my": "Tumpang tanya, mesin cetak dan mesin fotostat di mana?"}, {"speaker": "小明", "hz": "打印机在桌子下面。复印机在椅子后面。", "py": "Dǎyìnjī zài zhuōzi xiàmiàn. Fùyìnjī zài yǐzi hòumiàn.", "my": "Mesin cetak di bawah meja. Mesin fotostat di belakang kerusi."}]}, {"title": "对话（二）：王经理在吗？", "subtitle": "Halaman 50 • Mengambil Dokumen di Pejabat", "speakerA": "小明 (Xiǎomíng)", "speakerB": "哈山 (Hāshān)", "lines": [{"speaker": "哈山", "hz": "小明，在哪儿可以拿文件夹？", "py": "Xiǎomíng, zài nǎr kěyǐ ná wénjiànjiā?", "my": "Xiaoming, di mana saya boleh ambil fail dokumen?"}, {"speaker": "小明", "hz": "文件夹在王经理的柜子里面。", "py": "Wénjiànjiā zài Wáng jīnglǐ de guìzi lǐmiàn.", "my": "Fail dokumen berada di dalam almari Pengurus Wang."}, {"speaker": "哈山", "hz": "王经理在办公室吗？", "py": "Wáng jīnglǐ zài bàngōngshì ma?", "my": "Adakah Pengurus Wang ada di pejabat?"}, {"speaker": "小明", "hz": "王经理不在。他在会议室开会。", "py": "Wáng jīnglǐ bú zài. Tā zài huìyìshì kāihuì.", "my": "Pengurus Wang tiada. Beliau sedang bermesyuarat di bilik mesyuarat."}, {"speaker": "哈山", "hz": "好的，谢谢你！", "py": "Hǎo de, xièxie nǐ!", "my": "Baiklah, terima kasih!"}, {"speaker": "小明", "hz": "不客气！", "py": "Bú kèqi!", "my": "Sama-sama!"}]}], "topic_num": 4}, {"type": "roleplay", "tag": "AKTIVITI KELAS • ROLE-PLAY & SHADOWING", "title": "Latihan Pertuturan Berpasangan & Lakonan Situasi", "subtitle": "Mainkan audio dialog secara berterusan atau mengikut watak (Suara Lelaki untuk Watak A, Suara Perempuan untuk Watak B).", "speakerA": "小明 (Xiǎomíng)", "speakerB": "哈山 (Hāshān)", "dialogues": [{"title": "对话（一）：新的职员", "subtitle": "Halaman 49 • Melapor Diri di Pejabat", "speakerA": "小明 (Xiǎomíng)", "speakerB": "哈山 (Hāshān)", "lines": [{"speaker": "哈山", "hz": "您好！我叫哈山。我是新的职员。", "py": "Nín hǎo! Wǒ jiào Hāshān. Wǒ shì xīn de zhíyuán.", "my": "Helo! Nama saya Hasan. Saya staf baharu."}, {"speaker": "小明", "hz": "您好！我叫小明，我是您的同事。", "py": "Nín hǎo! Wǒ jiào Xiǎomíng, wǒ shì nín de tóngshì.", "my": "Helo! Nama saya Xiaoming, saya rakan sekerja anda."}, {"speaker": "哈山", "hz": "请问，我的座位在哪儿？", "py": "Qǐngwèn, wǒ de zuòwèi zài nǎr?", "my": "Tumpang tanya, tempat duduk saya di mana?"}, {"speaker": "小明", "hz": "你的座位在我的前面。你的桌子上面有文具和电脑。", "py": "Nǐ de zuòwèi zài wǒ de qiánmiàn. Nǐ de zhuōzi shàngmiàn yǒu wénjù hé diànnǎo.", "my": "Tempat duduk awak di hadapan saya. Atas meja awak ada alat tulis dan komputer."}, {"speaker": "哈山", "hz": "请问，打印机和复印机在哪儿？", "py": "Qǐngwèn, dǎyìnjī hé fùyìnjī zài nǎr?", "my": "Tumpang tanya, mesin cetak dan mesin fotostat di mana?"}, {"speaker": "小明", "hz": "打印机在桌子下面。复印机在椅子后面。", "py": "Dǎyìnjī zài zhuōzi xiàmiàn. Fùyìnjī zài yǐzi hòumiàn.", "my": "Mesin cetak di bawah meja. Mesin fotostat di belakang kerusi."}]}, {"title": "对话（二）：王经理在吗？", "subtitle": "Halaman 50 • Mengambil Dokumen di Pejabat", "speakerA": "小明 (Xiǎomíng)", "speakerB": "哈山 (Hāshān)", "lines": [{"speaker": "哈山", "hz": "小明，在哪儿可以拿文件夹？", "py": "Xiǎomíng, zài nǎr kěyǐ ná wénjiànjiā?", "my": "Xiaoming, di mana saya boleh ambil fail dokumen?"}, {"speaker": "小明", "hz": "文件夹在王经理的柜子里面。", "py": "Wénjiànjiā zài Wáng jīnglǐ de guìzi lǐmiàn.", "my": "Fail dokumen berada di dalam almari Pengurus Wang."}, {"speaker": "哈山", "hz": "王经理在办公室吗？", "py": "Wáng jīnglǐ zài bàngōngshì ma?", "my": "Adakah Pengurus Wang ada di pejabat?"}, {"speaker": "小明", "hz": "王经理不在。他在会议室开会。", "py": "Wáng jīnglǐ bú zài. Tā zài huìyìshì kāihuì.", "my": "Pengurus Wang tiada. Beliau sedang bermesyuarat di bilik mesyuarat."}, {"speaker": "哈山", "hz": "好的，谢谢你！", "py": "Hǎo de, xièxie nǐ!", "my": "Baiklah, terima kasih!"}, {"speaker": "小明", "hz": "不客气！", "py": "Bú kèqi!", "my": "Sama-sama!"}]}], "topic_num": 4}, {"type": "dialogue_comprehension", "tag": "SOALAN KEFAHAMAN DIALOG (理解问答)", "title": "Uji Kefahaman Berdasarkan Situasi Dialog (6 Soalan)", "subtitle": "Soalan menguji kefahaman pelajar terhadap situasi dan butiran dialog dalam Hanzi & Pinyin.", "questions": [{"q_hz": "谁是新来的职员？", "py": "Shéi shì xīn lái de zhíyuán?", "options": [{"hz": "李强", "py": "Lǐ Qiáng", "correct": true}, {"hz": "经理", "py": "Jīnglǐ", "correct": false}, {"hz": "老板", "py": "Lǎobǎn", "correct": false}, {"hz": "木都", "py": "Mù dū", "correct": false}], "ans": 0, "explain": "李强是今天报到的新职员。(Lǐ Qiáng shì jīntiān bàodào de xīn zhíyuán.)"}, {"q_hz": "新职员的座位在哪儿？", "py": "Xīn zhíyuán de zuòwèi zài nǎr?", "options": [{"hz": "在经理办公室的前面", "py": "Zài jīnglǐ bàngōngshì de qiánmiàn", "correct": true}, {"hz": "在复印机的旁边", "py": "Zài fùyìnjī de pángbiān", "correct": false}, {"hz": "在会议室里面", "py": "Zài huìyìshì lǐmiàn", "correct": false}, {"hz": "在大门后面", "py": "Zài dàmén hòumiàn", "correct": false}], "ans": 0, "explain": "你的座位在前面。(Nǐ de zuòwèi zài qiánmiàn.)"}, {"q_hz": "复印机在哪儿？", "py": "Fùyìnjī zài nǎr?", "options": [{"hz": "在会议室旁边", "py": "Zài huìyìshì pángbiān", "correct": true}, {"hz": "在桌子上面", "py": "Zài zhuōzi shàngmiàn", "correct": false}, {"hz": "在门外", "py": "Zài mén wài", "correct": false}, {"hz": "在洗手间后面", "py": "Zài xǐshǒujiān hòumiàn", "correct": false}], "ans": 0, "explain": "复印机在会议室旁边。(Fùyìnjī zài huìyìshì pángbiān.)"}, {"q_hz": "电脑放在哪儿？", "py": "Diànnǎo fàng zài nǎr?", "options": [{"hz": "在桌子上面", "py": "Zài zhuōzi shàngmiàn", "correct": true}, {"hz": "在椅子下面", "py": "Zài yǐzi xiàmiàn", "correct": false}, {"hz": "在柜子里面", "py": "Zài guìzi lǐmiàn", "correct": false}, {"hz": "在抽屉里", "py": "Zài chōuti lǐ", "correct": false}], "ans": 0, "explain": "电脑在桌子上面。(Diànnǎo zài zhuōzi shàngmiàn.)"}, {"q_hz": "文具放在哪儿？", "py": "Wénjù fàng zài nǎr?", "options": [{"hz": "在抽屉里面", "py": "Zài chōuti lǐmiàn", "correct": true}, {"hz": "在复印机上面", "py": "Zài fùyìnjī shàngmiàn", "correct": false}, {"hz": "在地上", "py": "Zài dìshang", "correct": false}, {"hz": "在窗户旁边", "py": "Zài chuānghu pángbiān", "correct": false}], "ans": 0, "explain": "文具在抽屉里面。(Wénjù zài chōuti lǐmiàn.)"}, {"q_hz": "经理现在在哪儿？", "py": "Jīnglǐ xiànzài zài nǎr?", "options": [{"hz": "在会议室开会", "py": "Zài huìyìshì kāihuì", "correct": true}, {"hz": "在办公室休息", "py": "Zài bàngōngshì xiūxi", "correct": false}, {"hz": "去吉隆坡出差", "py": "Qù Jílóngpō chūchāi", "correct": false}, {"hz": "在吃午饭", "py": "Zài chī wǔfàn", "correct": false}], "ans": 0, "explain": "经理在会议室开会。(Jīnglǐ zài huìyìshì kāihuì.)"}]}];
+    const currentTopicNum = 4;
     let currentSlideIdx = 0;
+    let currentAudioObj = null;
     let audioRate = 1.0;
-    const rates = [0.75, 1.0, 1.25];
-    let ratePointer = 1;
+    const rates = [1.0, 0.75, 1.25];
+    let ratePointer = 0;
+    let currentVocabWord = null;
 
-    /* Speech Synthesis */
-    function speakChinese(text) {
-      if (!window.speechSynthesis) return;
+    // Game 1 Match state
+    let matchedItems = {};
+    let selectedChip = null;
+
+    // Game 2 Listen state
+    let listenSelected = {};
+
+    // Game 3 Quiz state
+    let quizCurrentIdx = 0;
+    let quizScore = 0;
+    let quizAnswered = {};
+
+    // Roleplay state
+    let isRoleplayPinyinHidden = false;
+
+    // Helper: Fisher-Yates Shuffle
+    function shuffleArray(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    // Speech Synthesis initialization
+    let zhVoices = [];
+    function initVoices() {
+      if (typeof window === 'undefined' || !window.speechSynthesis) return;
+      zhVoices = window.speechSynthesis.getVoices().filter(v => v.lang && (v.lang.includes('zh') || v.lang.includes('cmn')));
+    }
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      initVoices();
+      window.speechSynthesis.onvoiceschanged = initVoices;
+    }
+
+    function speakChinese(text, role) {
+      if (!window.speechSynthesis) {
+        alert("Pelayar anda tidak menyokong Speech Synthesis.");
+        return;
+      }
       window.speechSynthesis.cancel();
+      
       const clean = text.replace(/[\(（].*?[\)）]/g, '').trim();
+      if (!clean) return;
+
       const utter = new SpeechSynthesisUtterance(clean);
       utter.lang = 'zh-CN';
       utter.rate = audioRate;
-      utter.pitch = 1.0;
 
-      const voices = window.speechSynthesis.getVoices();
-      const zhVoice = voices.find(v => v.lang.includes('zh') || v.lang.includes('cmn'));
-      if (zhVoice) utter.voice = zhVoice;
+      if (zhVoices.length === 0) initVoices();
 
-      window.speechSynthesis.speak(utter);
+      // Role differentiation: Male vs Female
+      const roleStr = String(role || '').toLowerCase();
+      const isMale = (role === 'A' || role === 'male' || roleStr.includes('老板') || roleStr.includes('服务员') || roleStr.includes('李强') || roleStr.includes('大伟') || roleStr.includes('经理') || roleStr.includes('watak a'));
+      const isFemale = (role === 'B' || role === 'female' || roleStr.includes('艾曼') || roleStr.includes('爱曼') || roleStr.includes('木都') || roleStr.includes('哈山') || roleStr.includes('爱妮') || roleStr.includes('白玛丽') || roleStr.includes('小雨') || roleStr.includes('watak b'));
+
+      // Male & Female Voice Differentiation (tested for Edge, Chrome & generic TTS)
+      const maleVoiceNames = ['yunxi', 'yunyang', 'yunjian', 'kangkang', 'zhiwei', 'danny', 'wanlung', 'benson', 'male', 'boy', 'man', 'david'];
+      const femaleVoiceNames = ['xiaoxiao', 'xiaoyi', 'huihui', 'yaoyao', 'hiugaai', 'female', 'girl', 'zira', 'hsiaochen'];
+
+      if (isMale) {
+        let mVoice = zhVoices.find(v => maleVoiceNames.some(m => v.name.toLowerCase().includes(m)));
+        if (mVoice) {
+          utter.voice = mVoice;
+          utter.pitch = 0.75;
+          utter.rate = audioRate * 0.90;
+        } else {
+          // Pitch 0.45 forces any standard voice into a deep, booming male register
+          if (zhVoices.length > 0) utter.voice = zhVoices[0];
+          utter.pitch = 0.45;
+          utter.rate = audioRate * 0.88;
+        }
+      } else if (isFemale) {
+        let fVoice = zhVoices.find(v => femaleVoiceNames.some(f => v.name.toLowerCase().includes(f)));
+        if (fVoice) {
+          utter.voice = fVoice;
+          utter.pitch = 1.25;
+          utter.rate = audioRate * 1.0;
+        } else {
+          // Pitch 1.35 produces a distinct, clear high-register female voice
+          if (zhVoices.length > 0) utter.voice = zhVoices[0];
+          utter.pitch = 1.35;
+          utter.rate = audioRate * 1.02;
+        }
+      } else {
+        if (zhVoices.length > 0) utter.voice = zhVoices[0];
+        utter.pitch = 1.0;
+      }
+
+      setTimeout(() => {
+        window.speechSynthesis.speak(utter);
+      }, 25);
     }
 
     function toggleAudioSpeed() {
@@ -195,270 +247,18 @@
       document.getElementById('speed-badge').textContent = audioRate + 'x';
     }
 
-    /* Fullscreen Toggle */
     function toggleFullscreen() {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(err => {});
-        document.getElementById('fs-icon').textContent = "✕";
       } else {
-        if (document.exitFullscreen) document.exitFullscreen();
-        document.getElementById('fs-icon').textContent = "⛶";
+        document.exitFullscreen().catch(err => {});
       }
     }
 
-    /* Render Current Slide */
-    function renderSlide() {
-      const slide = SLIDES[currentSlideIdx];
-      const total = SLIDES.length;
-      const viewport = document.getElementById('slide-viewport');
-
-      // Update Top Progress Bar & Indicator
-      const pct = ((currentSlideIdx + 1) / total) * 100;
-      document.getElementById('slide-progress').style.width = pct + '%';
-      document.getElementById('slide-num-indicator').textContent = `${currentSlideIdx + 1} / ${total}`;
-
-      // Update Nav Buttons
-      document.getElementById('btn-prev').disabled = (currentSlideIdx === 0);
-      const nextBtn = document.getElementById('btn-next');
-      if (currentSlideIdx === total - 1) {
-        nextBtn.innerHTML = `<span>Tamat 🏁</span>`;
-      } else {
-        nextBtn.innerHTML = `<span class="hidden sm:inline">Seterusnya</span><span>➔</span>`;
-      }
-
-      // Update Dots
-      const dotsContainer = document.getElementById('slide-dots');
-      dotsContainer.innerHTML = '';
-      SLIDES.forEach((_, idx) => {
-        const dot = document.createElement('button');
-        dot.className = `w-2.5 h-2.5 rounded-full transition-all ${idx === currentSlideIdx ? 'bg-indigo-400 w-6' : 'bg-slate-700 hover:bg-slate-500'}`;
-        dot.onclick = () => goToSlide(idx);
-        dot.title = `Lompat ke Slaid ${idx + 1}`;
-        dotsContainer.appendChild(dot);
-      });
-
-      // Viewport Animation
-      viewport.classList.remove('slide-active');
-      viewport.classList.add('slide-enter');
-
-      setTimeout(() => {
-        let contentHtml = '';
-
-        if (slide.type === 'title') {
-          contentHtml = `
-            <div class="flex flex-col items-center justify-center text-center my-auto py-6">
-              <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-black uppercase tracking-wider mb-4">
-                <span>🏢</span>
-                <span>${slide.tag}</span>
-              </div>
-              <h1 class="text-4xl sm:text-6xl font-hanzi font-black text-white tracking-wide mb-3 flex items-center justify-center space-x-4">
-                <span>${slide.hz}</span>
-                <button onclick="speakChinese('${slide.hz}')" class="w-12 h-12 rounded-2xl bg-indigo-600/30 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 flex items-center justify-center text-xl transition active:scale-90" title="Dengar Sebutan">
-                  🔊
-                </button>
-              </h1>
-              <p class="text-lg sm:text-2xl font-sans font-bold text-cyan-400 mb-8">${slide.py}</p>
-
-              <!-- Objectives Box -->
-              <div class="w-full max-w-2xl bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 sm:p-6 text-left shadow-lg">
-                <div class="flex items-center space-x-2 text-indigo-400 font-extrabold text-sm mb-3">
-                  <span>🎯</span>
-                  <span>HASIL PEMBELAJARAN (OBJEKTIF MODUL KV):</span>
-                </div>
-                <ul class="space-y-2 text-xs sm:text-sm text-slate-300 font-medium">
-                  ${slide.objectives.map(obj => `
-                    <li class="flex items-start space-x-2.5">
-                      <span class="text-emerald-400 font-bold">✓</span>
-                      <span>${obj}</span>
-                    </li>
-                  `).join('')}
-                </ul>
-              </div>
-
-              <div class="mt-8 text-xs text-slate-500 font-semibold">
-                Tekan ➔ atau Spacebar untuk memulakan sesi pengajaran kelas.
-              </div>
-            </div>
-          `;
-        } else if (slide.type === 'vocab_grid') {
-          contentHtml = `
-            <div>
-              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-                <div>
-                  <span class="text-xs font-black uppercase tracking-wider text-indigo-400">${slide.tag}</span>
-                  <h2 class="text-xl sm:text-2xl font-outfit font-black text-white">${slide.subtitle}</h2>
-                </div>
-                <div class="text-right">
-                  <span class="text-xs font-bold text-slate-400 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
-                    Klik perkataan untuk mendengar sebutan 🔊
-                  </span>
-                </div>
-              </div>
-
-              <!-- Vocab Grid (Large Cards for Screen/Projector) -->
-              <div class="grid grid-cols-2 sm:grid-cols-5 gap-3.5">
-                ${slide.words.map(w => `
-                  <button onclick="speakChinese('${w.hz}')" class="bg-slate-800/70 hover:bg-slate-800 hover:border-indigo-500 border border-slate-700/80 rounded-2xl p-3.5 text-center transition flex flex-col justify-between items-center group shadow-md active:scale-95">
-                    <span class="text-[10px] font-bold text-indigo-300 uppercase bg-indigo-950/60 px-2 py-0.5 rounded-md border border-indigo-800/50 self-end mb-1">
-                      ${w.type}
-                    </span>
-                    <ruby class="font-hanzi text-2xl sm:text-3xl font-black text-white group-hover:text-cyan-300 transition my-1">
-                      ${w.hz}<rt class="text-indigo-400">${w.py}</rt>
-                    </ruby>
-                    <span class="text-xs font-bold text-slate-300 mt-1">${w.my}</span>
-                    <span class="text-[10px] text-slate-500 mt-1 group-hover:text-indigo-400 flex items-center space-x-1">
-                      <span>🔊</span><span>Sebut</span>
-                    </span>
-                  </button>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        } else if (slide.type === 'grammar') {
-          contentHtml = `
-            <div>
-              <div class="border-b border-slate-800 pb-3 mb-5">
-                <span class="text-xs font-black uppercase tracking-wider text-indigo-400">${slide.tag}</span>
-                <h2 class="text-xl sm:text-2xl font-outfit font-black text-white">${slide.title}</h2>
-              </div>
-
-              <div class="space-y-4">
-                ${slide.patterns.map((p, idx) => `
-                  <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-4 sm:p-5 shadow-md">
-                    <div class="flex items-center justify-between mb-1.5">
-                      <span class="text-xs font-black text-cyan-400 bg-cyan-950/70 px-2.5 py-0.5 rounded-full border border-cyan-800/60">
-                        Pola ${idx + 1}
-                      </span>
-                      <span class="text-xs text-slate-400">${p.explain}</span>
-                    </div>
-                    <div class="text-sm sm:text-base font-bold font-mono text-indigo-200 bg-slate-900/90 px-3 py-2 rounded-xl border border-slate-700/80 my-2">
-                      ${p.formula}
-                    </div>
-                    <!-- Example with Pronounce button -->
-                    <div class="flex items-center justify-between bg-slate-900/50 p-2.5 rounded-xl border border-slate-800">
-                      <div>
-                        <div class="font-hanzi text-lg sm:text-xl font-bold text-white flex items-center space-x-2">
-                          <span>${p.exampleHz}</span>
-                          <span class="text-xs font-sans text-cyan-400 font-semibold">(${p.examplePy})</span>
-                        </div>
-                        <div class="text-xs text-slate-400 mt-0.5">${p.exampleMy}</div>
-                      </div>
-                      <button onclick="speakChinese('${p.exampleHz}')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center space-x-1 active:scale-95 transition shadow-sm">
-                        <span>🔊</span><span>Sebut Ayat</span>
-                      </button>
-                    </div>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        } else if (slide.type === 'dialogue') {
-          contentHtml = `
-            <div>
-              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-                <div>
-                  <span class="text-xs font-black uppercase tracking-wider text-indigo-400">${slide.tag}</span>
-                  <h2 class="text-xl sm:text-2xl font-outfit font-black text-white">${slide.title}</h2>
-                </div>
-                <button onclick="playAllDialogue()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center space-x-1.5 active:scale-95 transition shadow-md shadow-indigo-900/40">
-                  <span>▶️</span><span>Mainkan Semua Dialog</span>
-                </button>
-              </div>
-
-              <!-- Dialogue Lines -->
-              <div class="space-y-3">
-                ${slide.lines.map((l, lIdx) => `
-                  <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between hover:border-slate-600 transition group">
-                    <div class="flex items-center space-x-3.5">
-                      <div class="w-10 h-10 rounded-2xl bg-indigo-900/60 border border-indigo-700/60 text-indigo-300 flex items-center justify-center font-bold text-xs shrink-0">
-                        ${l.speaker.split(' ')[0]}
-                      </div>
-                      <div>
-                        <div class="text-[11px] font-bold text-indigo-400">${l.speaker}</div>
-                        <div class="font-hanzi text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition">
-                          ${l.hz}
-                        </div>
-                        <div class="text-xs font-semibold text-cyan-400">${l.py}</div>
-                        <div class="text-xs text-slate-400 mt-0.5">${l.my}</div>
-                      </div>
-                    </div>
-                    <button onclick="speakChinese('${l.hz}')" class="w-9 h-9 rounded-xl bg-slate-700 group-hover:bg-indigo-600 text-slate-200 group-hover:text-white flex items-center justify-center text-sm font-bold transition shrink-0 ml-3 active:scale-90" title="Dengar sebutan baris ini">
-                      🔊
-                    </button>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        } else if (slide.type === 'class_activity') {
-          contentHtml = `
-            <div>
-              <div class="border-b border-slate-800 pb-3 mb-4">
-                <span class="text-xs font-black uppercase tracking-wider text-emerald-400">${slide.tag}</span>
-                <h2 class="text-xl sm:text-2xl font-outfit font-black text-white">${slide.title}</h2>
-                <p class="text-xs text-slate-400 mt-0.5">Guru menanyakan soalan kepada murid, kemudian tekan butang untuk mendedahkan jawapan tepat.</p>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                ${slide.questions.map((item, qIdx) => `
-                  <div class="bg-slate-800/80 border border-slate-700/90 rounded-2xl p-4 flex flex-col justify-between shadow-md">
-                    <div class="font-bold text-white text-sm sm:text-base mb-3 leading-snug">
-                      ${item.q}
-                    </div>
-                    <div>
-                      <div id="ans-box-${qIdx}" class="hidden p-2.5 rounded-xl bg-emerald-950/70 border border-emerald-700/60 text-emerald-300 text-xs sm:text-sm font-bold font-hanzi mb-2">
-                        💡 Jawapan: ${item.a}
-                      </div>
-                      <button onclick="toggleAnswer(${qIdx})" id="ans-btn-${qIdx}" class="w-full py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-bold transition active:scale-95">
-                        👁️ Dedahkan Jawapan
-                      </button>
-                    </div>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `;
-        } else if (slide.type === 'summary') {
-          contentHtml = `
-            <div class="flex flex-col items-center justify-center text-center my-auto py-6">
-              <div class="w-16 h-16 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white text-3xl font-black shadow-xl shadow-emerald-900/40 mb-4 animate-bounce">
-                🎉
-              </div>
-              <span class="text-xs font-black uppercase tracking-wider text-emerald-400 mb-1">${slide.tag}</span>
-              <h2 class="text-3xl sm:text-4xl font-outfit font-black text-white mb-6">${slide.title}</h2>
-
-              <div class="w-full max-w-xl bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 text-left mb-6 shadow-md">
-                <div class="text-xs font-extrabold text-slate-300 uppercase tracking-wider mb-2.5">
-                  📌 KESIMPULAN SESI PEMBELAJARAN HARI INI:
-                </div>
-                <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
-                  ${slide.points.map(pt => `
-                    <li class="flex items-start space-x-2">
-                      <span class="text-emerald-400 font-bold">✓</span>
-                      <span>${pt}</span>
-                    </li>
-                  `).join('')}
-                </ul>
-              </div>
-
-              <!-- CTA: Launch Student Self-Learn App -->
-              <div class="flex flex-wrap items-center justify-center gap-3">
-                <a href="${slide.selfLearnUrl}" class="h-11 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-extrabold text-sm flex items-center space-x-2 shadow-lg shadow-emerald-900/40 active:scale-95 transition">
-                  <span>📱</span>
-                  <span>Mula Latihan Kendiri Murid (20 Soalan & Suara)</span>
-                </a>
-                <button onclick="goToSlide(0)" class="h-11 px-4 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-sm border border-slate-700 active:scale-95 transition">
-                  🔄 Ulang Slaid Dari Mula
-                </button>
-              </div>
-            </div>
-          `;
-        }
-
-        viewport.innerHTML = contentHtml;
-        viewport.classList.remove('slide-enter');
-        viewport.classList.add('slide-active');
-      }, 80);
+    function goToSlide(idx) {
+      if (idx < 0 || idx >= SLIDES.length) return;
+      currentSlideIdx = idx;
+      renderSlide();
     }
 
     function nextSlide() {
@@ -475,61 +275,1012 @@
       }
     }
 
-    function goToSlide(idx) {
-      if (idx >= 0 && idx < SLIDES.length) {
-        currentSlideIdx = idx;
-        renderSlide();
-      }
-    }
-
-    function toggleAnswer(idx) {
-      const box = document.getElementById(`ans-box-${idx}`);
-      const btn = document.getElementById(`ans-btn-${idx}`);
-      if (box.classList.contains('hidden')) {
-        box.classList.remove('hidden');
-        btn.textContent = "🙈 Sembunyikan Jawapan";
-        btn.classList.add('bg-slate-800');
+    function updateNav() {
+      const total = SLIDES.length;
+      document.getElementById('slide-counter').textContent = `${currentSlideIdx + 1} / ${total}`;
+      document.getElementById('btn-prev').disabled = (currentSlideIdx === 0);
+      
+      const btnNext = document.getElementById('btn-next');
+      if (currentSlideIdx === total - 1) {
+        btnNext.disabled = false;
+        btnNext.className = "px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-black text-white transition flex items-center space-x-1 shadow-lg shadow-emerald-600/40 cursor-pointer animate-pulse";
+        btnNext.innerHTML = "<span>🏁 Tamat (Ke Menu Utama)</span><span>🏠</span>";
+        btnNext.onclick = () => { window.location.href = 'index.html'; };
       } else {
-        box.classList.add('hidden');
-        btn.textContent = "👁️ Dedahkan Jawapan";
-        btn.classList.remove('bg-slate-800');
+        btnNext.disabled = false;
+        btnNext.className = "px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-30 disabled:cursor-not-allowed text-xs font-black text-white transition flex items-center space-x-1 shadow-md shadow-indigo-600/30 cursor-pointer";
+        btnNext.innerHTML = "<span>Seterusnya</span><span>➡️</span>";
+        btnNext.onclick = nextSlide;
       }
+      
+      const pct = ((currentSlideIdx + 1) / total) * 100;
+      document.getElementById('slide-progress').style.width = pct + '%';
+
+      const dotsContainer = document.getElementById('slide-dots');
+      dotsContainer.innerHTML = '';
+      SLIDES.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.onclick = () => goToSlide(i);
+        dot.className = `h-2 rounded-full transition-all ${i === currentSlideIdx ? 'w-6 bg-indigo-500' : 'w-2 bg-slate-700 hover:bg-slate-500'}`;
+        dot.title = `Slaid ${i + 1}`;
+        dotsContainer.appendChild(dot);
+      });
     }
 
-    function playAllDialogue() {
+    // ==========================================
+    // SLIDE RENDERERS
+    // ==========================================
+    function renderSlide() {
       const slide = SLIDES[currentSlideIdx];
-      if (slide.type !== 'dialogue') return;
-      let lineIndex = 0;
-      function speakNext() {
-        if (lineIndex < slide.lines.length) {
-          const l = slide.lines[lineIndex];
-          speakChinese(l.hz);
-          lineIndex++;
-          setTimeout(speakNext, 3200);
-        }
+      const viewport = document.getElementById('slide-content');
+      updateNav();
+
+      let contentHtml = '';
+
+      // 1. TITLE
+      if (slide.type === 'title') {
+        contentHtml = `
+          <div class="h-full flex flex-col justify-between py-2">
+            <div>
+              <span class="text-xs font-black tracking-widest uppercase px-3 py-1 rounded-full bg-indigo-950 text-indigo-400 border border-indigo-800/50 inline-block mb-3">
+                ${slide.tag}
+              </span>
+              <div class="flex items-center space-x-4 mb-2">
+                <span class="text-5xl sm:text-6xl">${slide.emoji}</span>
+                <div>
+                  <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black font-hanzi text-white tracking-wide">
+                    ${slide.hz}
+                  </h1>
+                  <p class="text-base sm:text-lg font-bold text-sky-400 mt-1 font-mono">
+                    ${slide.py}
+                  </p>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60 text-xs sm:text-sm text-slate-300 mt-3">
+                <span class="font-black text-amber-400 uppercase tracking-wide">🎯 Situasi Pembelajaran:</span>
+                <span class="ml-1">${slide.situation}</span>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <h3 class="text-xs font-black uppercase tracking-wider text-slate-400 mb-2.5">
+                📋 6 OBJEKTIF PEMBELAJARAN TOPIK INI:
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                ${slide.objectives.map((obj, i) => `
+                  <div class="p-2.5 rounded-xl bg-slate-800/40 border border-slate-700/40 flex items-start space-x-2 text-xs text-slate-300">
+                    <span class="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 font-black flex items-center justify-center shrink-0 border border-indigo-500/30 text-[10px] mt-0.5">
+                      ${i + 1}
+                    </span>
+                    <span class="leading-relaxed">${obj}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
       }
-      speakNext();
+
+      // 2, 3, 4. VOCAB INTERACTIVE WITH PICTURES ON EVERY CARD
+      else if (slide.type === 'vocab_interactive') {
+        const words = slide.words;
+        currentVocabWord = words[0];
+        contentHtml = `
+          <div class="flex flex-col justify-between h-full">
+            <div class="border-b border-slate-800 pb-2 mb-3 flex items-center justify-between">
+              <div>
+                <span class="text-xs font-black uppercase tracking-wider text-indigo-400">${slide.tag}</span>
+                <p class="text-xs text-slate-400 mt-0.5">${slide.subtitle}</p>
+              </div>
+              <div class="text-xs text-slate-400 bg-slate-800/60 px-2.5 py-1 rounded-lg border border-slate-700/60">
+                💡 Klik kad perkataan untuk melihat ayat & audio
+              </div>
+            </div>
+
+            <!-- VOCAB GRID WITH PICTURE/ILLUSTRATION ON EVERY CARD -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 flex-1 mb-3">
+              ${words.map((w, idx) => `
+                <div id="vcard-${idx}" onclick="selectVocabWord('${w.hz}', ${idx})" class="vcard cursor-pointer p-2.5 sm:p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 hover:border-indigo-500/80 transition-all flex flex-col justify-between hover:scale-[1.02] shadow-md ${idx === 0 ? 'ring-2 ring-indigo-500 bg-indigo-950/30' : ''}">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-mono text-sky-400">${w.py}</span>
+                    <span class="text-[9px] font-black uppercase text-indigo-300 bg-indigo-950/80 px-1.5 py-0.5 rounded border border-indigo-800/40">
+                      ${w.type}
+                    </span>
+                  </div>
+                  
+                  <!-- ILLUSTRATION ICON / PICTURE -->
+                  <div class="my-1.5 py-1.5 rounded-xl bg-gradient-to-br ${w.bg} border ${w.border} flex items-center justify-center">
+                    <span class="text-2xl sm:text-3xl filter drop-shadow">${w.emoji}</span>
+                  </div>
+
+                  <div class="text-center">
+                    <div class="text-xl sm:text-2xl font-black text-white font-hanzi">${w.hz}</div>
+                    <div class="text-[11px] text-slate-300 mt-0.5 font-medium truncate">${w.my}</div>
+                  </div>
+
+                  <button onclick="event.stopPropagation(); speakChinese('${w.hz}')" class="mt-2 w-full py-1 rounded-lg bg-slate-700/60 hover:bg-indigo-600 text-[10px] font-bold text-slate-300 hover:text-white flex items-center justify-center space-x-1 transition">
+                    <span>🔊 Sebut</span>
+                  </button>
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- DEDICATED EXAMPLE SENTENCE DISPLAY BOX -->
+            <div id="vocab-sentence-box" class="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-slate-800/90 via-slate-800/70 to-indigo-950/40 border border-indigo-500/30 shadow-lg">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[10px] font-black uppercase tracking-wider text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800/40">
+                  🌟 Contoh Ayat Sebenar (例句)
+                </span>
+                <button id="btn-vocab-sent-audio" onclick="speakChinese('${currentVocabWord.exHz}')" class="px-3 py-1 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs flex items-center space-x-1.5 shadow transition">
+                  <span>🔊</span>
+                  <span>Sebut Ayat Penuh</span>
+                </button>
+              </div>
+              <div id="vocab-sent-hz" class="text-lg sm:text-xl font-black font-hanzi text-white">
+                ${currentVocabWord.exHz}
+              </div>
+              <div id="vocab-sent-py" class="text-xs sm:text-sm font-mono text-sky-400 mt-0.5 font-bold">
+                ${currentVocabWord.exPy}
+              </div>
+              <div id="vocab-sent-my" class="text-xs text-slate-300 mt-0.5">
+                Maksud: "${currentVocabWord.exMy}"
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // 5. GAME 1: DRAG & DROP 10 PICTURE ITEMS
+      else if (slide.type === 'game_match_drag') {
+        const items = slide.items;
+        matchedItems = {};
+        selectedChip = null;
+
+        // Shuffle chips so they NEVER match the 1..10 slot order!
+        const indexedChips = items.map((it, idx) => ({ ...it, origIdx: idx }));
+        const shuffledChips = shuffleArray(indexedChips);
+
+        contentHtml = `
+          <div>
+            <div class="border-b border-slate-800 pb-2 mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-black uppercase tracking-wider text-amber-400">${slide.tag}</span>
+                <h2 class="text-lg sm:text-xl font-outfit font-black text-white">${slide.title}</h2>
+                <p class="text-xs text-slate-400 mt-0.5">${slide.subtitle}</p>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span id="match-counter" class="px-2.5 py-1 rounded-xl bg-emerald-950/80 border border-emerald-700/60 text-emerald-400 font-mono text-xs font-black">
+                  0 / ${items.length} Selesai
+                </span>
+                <button onclick="resetMatchGame()" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center space-x-1 transition">
+                  <span>🔄</span><span>Reset</span>
+                </button>
+                <button onclick="revealAllMatches()" class="px-2.5 py-1 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs flex items-center space-x-1 transition shadow">
+                  <span>👁️</span><span>Skema Guru</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- SUCCESS BANNER -->
+            <div id="match-win-banner" class="hidden mb-3 p-3 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-center font-black text-sm shadow-lg animate-bounce">
+              🎉 TAHNIAH! KESEMUA 10 GAMBAR TELAH BERJAYA DIPADANKAN DENGAN TEPAT! ⭐ +100 MARKAH
+            </div>
+
+            <!-- 10 PICTURE TARGET SLOTS (5x2 Grid) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-2.5 mb-3">
+              ${items.map((it, idx) => `
+                <div id="target-slot-${idx}" 
+                     ondragover="handleDragOver(event)" 
+                     ondragleave="handleDragLeave(event)" 
+                     ondrop="handleDrop(event, ${idx}, '${it.hz}')" 
+                     onclick="clickTargetSlot(${idx}, '${it.hz}')"
+                     class="target-slot cursor-pointer p-2.5 rounded-2xl bg-slate-800/80 border-2 border-dashed border-slate-700 hover:border-sky-400 transition-all flex flex-col items-center justify-between min-h-[155px] sm:min-h-[175px] shadow-sm relative">
+                  
+                  <!-- Number Badge Top Right -->
+                  <div class="w-full flex items-center justify-end">
+                    <span class="text-[10px] font-black uppercase text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-slate-700/60">
+                      ${idx + 1}
+                    </span>
+                  </div>
+
+                  <!-- LARGE PICTURE / ILLUSTRATION IN THE CENTER -->
+                  <div class="my-1.5 sm:my-2 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${it.color} border ${it.border} flex items-center justify-center shadow-lg transform hover:scale-105 transition">
+                    <span class="text-3xl sm:text-4xl filter drop-shadow select-none">
+                      ${it.emoji}
+                    </span>
+                  </div>
+
+                  <!-- Item Label -->
+                  <div class="text-xs sm:text-sm font-bold text-slate-200 text-center truncate w-full">
+                    ${it.my}
+                  </div>
+
+                  <!-- Drop Zone Box -->
+                  <div id="slot-dropzone-${idx}" class="w-full mt-1.5 py-1 px-1 rounded-xl bg-slate-900/80 border border-slate-700/80 text-center min-h-[36px] flex items-center justify-center">
+                    <span class="text-[10px] text-slate-500 italic">Seret / Klik Sini</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- WORD CHIPS TO DRAG / CLICK -->
+            <div class="p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60">
+              <div class="text-[11px] font-black uppercase tracking-wider text-amber-400 mb-2 flex items-center justify-between">
+                <span>📁 Pilihan Kad Aksara Hanzi & Pinyin (Seret atau Klik Kad):</span>
+                <span class="text-[10px] text-slate-400 lowercase">sentuh skrin / tetikus disokong</span>
+              </div>
+              <div id="word-chips-container" class="flex flex-wrap gap-2 justify-center">
+                ${shuffledChips.map((it) => `
+                  <div id="chip-${it.origIdx}" 
+                       draggable="true" 
+                       ondragstart="handleDragStart(event, '${it.hz}', ${it.origIdx})" 
+                       onclick="selectChipToPlace('${it.hz}', ${it.origIdx})"
+                       class="word-chip cursor-grab active:cursor-grabbing px-3 py-1.5 rounded-xl bg-slate-700/90 hover:bg-indigo-600 border border-slate-600 hover:border-indigo-400 text-white font-black text-xs flex items-center space-x-1.5 shadow-md active:scale-95 transition">
+                    <span class="font-hanzi text-sm">${it.hz}</span>
+                    <span class="font-mono text-[10px] text-sky-300 font-normal">${it.py}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // 6. GAME 2: DENGAR & TEKA (10 CABARAN AUDIO)
+      else if (slide.type === 'game_listen') {
+        listenSelected = {};
+        contentHtml = `
+          <div>
+            <div class="border-b border-slate-800 pb-2 mb-3 flex items-center justify-between">
+              <div>
+                <span class="text-xs font-black uppercase tracking-wider text-amber-400">${slide.tag}</span>
+                <h2 class="text-lg sm:text-xl font-outfit font-black text-white">${slide.title}</h2>
+                <p class="text-xs text-slate-400 mt-0.5">${slide.subtitle}</p>
+              </div>
+              <div id="listen-score" class="px-3 py-1 rounded-xl bg-amber-950/80 border border-amber-700/60 text-amber-400 font-black text-xs">
+                ⭐ Skor: 0 / ${slide.items.length * 10}
+              </div>
+            </div>
+
+            <!-- 10 AUDIO CHALLENGES IN SCROLLABLE CONTAINER -->
+            <div class="space-y-2.5 max-h-[460px] overflow-y-auto pr-2 custom-scrollbar">
+              ${slide.items.map((it, itIdx) => `
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3 flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-md">
+                  <div class="flex items-center space-x-3">
+                    <button onclick="speakChinese('${it.hz}')" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white font-black text-xs flex items-center space-x-1.5 shadow transition shrink-0">
+                      <span>🔊</span><span>Main Audio Cabaran ${itIdx + 1}</span>
+                    </button>
+                    <div>
+                      <div class="text-[10px] font-black uppercase text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800/40 inline-block">
+                        Cabaran ${itIdx + 1}
+                      </div>
+                      <div class="text-xs text-slate-400 mt-0.5">
+                        Dengar sebutan audio dan pilih perkataan yang betul di sebelah:
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 3 Choices -->
+                  <div class="grid grid-cols-3 gap-2 shrink-0 md:w-[380px]">
+                    ${it.options.map((opt, oIdx) => `
+                      <button id="listen-btn-${itIdx}-${oIdx}" 
+                              onclick="checkListenChoice(${itIdx}, ${oIdx}, ${opt.correct ? 'true' : 'false'}, '${it.hz}')"
+                              class="listen-opt-btn p-2 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-indigo-500 text-center transition flex flex-col justify-between">
+                        <div class="font-hanzi font-black text-sm text-white">${opt.hz}</div>
+                        <div class="text-[10px] font-mono text-sky-400">${opt.py}</div>
+                        <div class="text-[9px] text-slate-400 truncate mt-0.5">${opt.my}</div>
+                      </button>
+                    `).join('')}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // 7. GAME 3: KUIZ INTERAKTIF 10 SOALAN
+      else if (slide.type === 'gamification_quiz') {
+        quizCurrentIdx = 0;
+        quizScore = 0;
+        quizAnswered = {};
+        contentHtml = renderQuizInnerHtml(slide);
+      }
+
+      // 8. FOKUS BAHASA (GABUNG 1 SLAID SAHAJA)
+      else if (slide.type === 'grammar_combined') {
+        const patterns = slide.patterns || [];
+        contentHtml = `
+          <div class="h-full flex flex-col justify-between">
+            <div class="border-b border-slate-800 pb-2 mb-3">
+              <span class="text-xs font-black uppercase tracking-wider text-amber-400">${slide.tag}</span>
+              <h2 class="text-lg sm:text-xl font-outfit font-black text-white">${slide.title}</h2>
+              <p class="text-xs text-slate-400 mt-0.5">${slide.subtitle}</p>
+            </div>
+
+            <!-- COMBINED GRAMMAR PATTERNS (1 Page) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 flex-1 overflow-y-auto custom-scrollbar pr-1">
+              ${patterns.map((p, idx) => `
+                <div class="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between shadow-md">
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-[10px] font-black uppercase text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800/40">
+                        Formula Tatabahasa ${idx + 1}
+                      </span>
+                      <span class="text-xs text-slate-400 font-medium">${p.explain || p.note || ''}</span>
+                    </div>
+
+                    <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-700/90 font-mono text-xs sm:text-sm text-sky-300 font-bold mb-3">
+                      ${p.formula}
+                    </div>
+
+                    <div class="text-base sm:text-lg font-black font-hanzi text-white">
+                      ${p.exampleHz || p.ex || ''}
+                    </div>
+                    <div class="text-xs font-mono text-sky-400 mt-0.5 font-bold">
+                      ${p.examplePy || p.py || ''}
+                    </div>
+                    <div class="text-xs text-slate-300 mt-1">
+                      ${p.exampleMy || p.my || ''}
+                    </div>
+                  </div>
+
+                  <div class="mt-3 pt-2 border-t border-slate-700/60 flex justify-end">
+                    <button onclick="speakChinese('${p.exampleHz || p.ex || ''}')" class="px-3 py-1 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs flex items-center space-x-1.5 shadow transition">
+                      <span>🔊</span><span>Sebut Formula</span>
+                    </button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // 9. LATIHAN AYAT (10 SOALAN)
+      else if (slide.type === 'sentence_practice') {
+        contentHtml = `
+          <div>
+            <div class="border-b border-slate-800 pb-2 mb-3">
+              <span class="text-xs font-black uppercase tracking-wider text-emerald-400">${slide.tag}</span>
+              <h2 class="text-lg sm:text-xl font-outfit font-black text-white">${slide.title}</h2>
+              <p class="text-xs text-slate-400 mt-0.5">${slide.subtitle}</p>
+            </div>
+
+            <!-- 10 SENTENCE CHALLENGES (2-column scrollable grid) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 max-h-[460px] overflow-y-auto pr-2 custom-scrollbar">
+              ${slide.items.map((it, idx) => `
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3 flex flex-col justify-between shadow-sm">
+                  <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                      <span class="text-[10px] font-black uppercase text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">
+                        Latihan Ayat ${it.num}
+                      </span>
+                      <span class="text-[10px] text-slate-400 font-mono truncate max-w-[180px]">${it.formula}</span>
+                    </div>
+
+                    <div class="text-xs sm:text-sm font-bold text-slate-200">
+                      🎯 Maksud Ayat: <span class="text-sky-300">"${it.targetMy}"</span>
+                    </div>
+
+                    <!-- Hidden Scheme -->
+                    <div id="sent-ans-${idx}" class="hidden mt-2 p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-700/50">
+                      <div class="flex items-center justify-between">
+                        <div>
+                          <div class="text-base font-black font-hanzi text-white">${it.explain.split('(')[0]}</div>
+                          <div class="text-xs font-mono text-emerald-300 font-bold">${it.explain.includes('(') ? it.explain.split('(')[1].replace(')', '') : ''}</div>
+                        </div>
+                        <button onclick="speakChinese('${it.audioText}')" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center space-x-1 shadow transition shrink-0 ml-2">
+                          <span>🔊 Sebut</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-2 pt-2 border-t border-slate-700/50 flex justify-end">
+                    <button id="sent-btn-${idx}" onclick="toggleSentenceAns(${idx})" class="text-xs text-slate-400 hover:text-white font-bold flex items-center space-x-1">
+                      <span>👁️ Dedahkan Skema Jawapan Guru</span>
+                    </button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // 10. DIALOGUE FULL TEXT
+      else if (slide.type === 'dialogue_full') {
+        contentHtml = `
+          <div class="h-full flex flex-col justify-between">
+            <div class="border-b border-slate-800 pb-2 mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-black uppercase tracking-wider text-amber-400">${slide.tag}</span>
+                <h2 class="text-lg sm:text-xl font-outfit font-black text-white">${slide.title}</h2>
+                <p class="text-xs text-slate-400 mt-0.5">${slide.subtitle}</p>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button id="rf-my-dlg" onclick="toggleBmTranslation()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-xs transition flex items-center space-x-1 shadow">
+                  <span>👁️ Tunjuk Maksud BM</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Dialogues Container -->
+            <div class="space-y-3 flex-1 overflow-y-auto custom-scrollbar pr-2">
+              ${slide.dialogues.map((dlg, dIdx) => `
+                <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-4 shadow-md">
+                  <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-700/60">
+                    <span class="text-xs font-black text-amber-400 uppercase tracking-wide">
+                      ${dlg.title || `Dialog ${dIdx + 1}`}
+                    </span>
+                    <button onclick="speakChinese('${dlg.lines.map(l => l.hz).join('，')}')" class="px-3 py-1 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs flex items-center space-x-1 shadow">
+                      <span>🔊</span><span>Mainkan Dialog Penuh</span>
+                    </button>
+                  </div>
+
+                  ${dlg.image ? `
+                    <div class="mb-3 rounded-xl overflow-hidden border border-slate-700/80 bg-slate-900/80 flex items-center justify-center p-2">
+                      <img src="${dlg.image}" alt="Teks Dialog Autentik" class="max-h-[220px] rounded object-contain">
+                    </div>
+                  ` : ''}
+
+                  <div class="space-y-2.5">
+                    ${dlg.lines.map((l, lIdx) => {
+                      const isA = (lIdx % 2 === 0);
+                      const roleVoice = isA ? 'male' : 'female';
+                      return `
+                      <div class="p-3 rounded-2xl ${isA ? 'bg-blue-950/40 border border-blue-500/60 hover:border-blue-400' : 'bg-pink-950/40 border border-pink-500/60 hover:border-pink-400'} flex items-center justify-between transition shadow-sm">
+                        <div>
+                          <div class="flex items-center space-x-2 mb-0.5">
+                            <span class="w-5 h-5 rounded-full ${isA ? 'bg-blue-600 ring-1 ring-blue-400' : 'bg-pink-600 ring-1 ring-pink-400'} text-white text-[10px] font-black flex items-center justify-center">${isA ? 'A' : 'B'}</span>
+                            <span class="text-xs font-black ${isA ? 'text-blue-300' : 'text-pink-300'}">${l.speaker}:</span>
+                          </div>
+                          <div class="text-base sm:text-lg font-black font-hanzi text-white ml-7">${l.hz}</div>
+                          <div class="text-xs font-mono ${isA ? 'text-blue-200' : 'text-pink-200'} ml-7 font-bold">${l.py}</div>
+                          <div class="dlg-my text-xs text-slate-300 mt-1.5 ml-7 p-2 rounded-xl bg-slate-900/80 border border-slate-700/80" style="display: none;">🎯 ${l.my}</div>
+                        </div>
+                        <button onclick="playDialogueAudio(${slide.topic_num || topic_num}, ${dIdx}, ${lIdx}, '${l.hz}', '${roleVoice}')" class="p-2 rounded-xl ${isA ? 'bg-blue-900/80 hover:bg-blue-600 text-blue-200 border border-blue-500/60' : 'bg-pink-900/80 hover:bg-pink-600 text-pink-200 border border-pink-500/60'} hover:text-white transition shrink-0 ml-2 shadow" title="Sebut Ayat Ini">
+                          🔊
+                        </button>
+                      </div>
+                      `;
+                    }).join('')}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // 11. ROLEPLAY & SHADOWING WITH MALE & FEMALE VOICE DIFFERENTIATION
+      else if (slide.type === 'roleplay') {
+        contentHtml = `
+          <div class="h-full flex flex-col justify-between">
+            <div class="border-b border-slate-800 pb-2 mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-black uppercase tracking-wider text-pink-400">${slide.tag}</span>
+                <h2 class="text-lg sm:text-xl font-outfit font-black text-white">${slide.title}</h2>
+                <p class="text-xs text-slate-400 mt-0.5">${slide.subtitle}</p>
+              </div>
+
+              <!-- Filter & Controls -->
+              <div class="flex flex-wrap items-center gap-2">
+                <button onclick="playAllDialogueRoleplay()" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-pink-600 hover:from-blue-500 hover:to-pink-500 text-white font-black text-xs flex items-center space-x-1 shadow-lg transition">
+                  <span>▶️ Auto-Play Dialog (Lelaki 🔵 & Perempuan 🌸)</span>
+                </button>
+                <button id="rf-pinyin" onclick="togglePinyinRoleplay()" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-bold text-xs transition">
+                  👁️ Sembunyi Pinyin
+                </button>
+                <button id="rf-my-rp" onclick="toggleBmTranslation()" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-xs transition flex items-center space-x-1 shadow">
+                  <span>👁️ Tunjuk Maksud BM</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Role Badges (Watak A = Lelaki (BIRU), Watak B = Perempuan (PINK)) -->
+            <div class="grid grid-cols-2 gap-3 mb-3">
+              <div class="p-3 rounded-2xl bg-blue-950/80 border-2 border-blue-500 flex items-center space-x-3 shadow-lg shadow-blue-500/20">
+                <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-black text-sm flex items-center justify-center shrink-0 ring-2 ring-blue-400 shadow">
+                  A
+                </div>
+                <div>
+                  <div class="text-[10px] font-black uppercase tracking-wider text-blue-300">Watak A • 👨 Suara Lelaki (Kumpulan Kiri)</div>
+                  <div class="text-sm font-black text-white">${slide.speakerA}</div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-pink-950/80 border-2 border-pink-500 flex items-center space-x-3 shadow-lg shadow-pink-500/20">
+                <div class="w-8 h-8 rounded-full bg-pink-600 text-white font-black text-sm flex items-center justify-center shrink-0 ring-2 ring-pink-400 shadow">
+                  B
+                </div>
+                <div>
+                  <div class="text-[10px] font-black uppercase tracking-wider text-pink-300">Watak B • 👩 Suara Perempuan (Kumpulan Kanan)</div>
+                  <div class="text-sm font-black text-white">${slide.speakerB}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dialogue Lines Container -->
+            <div class="space-y-3 flex-1 overflow-y-auto custom-scrollbar pr-2 max-h-[380px]">
+              ${slide.dialogues.map((dlg, dIdx) => `
+                <div class="mb-3">
+                  <div class="text-xs font-black text-amber-400 uppercase tracking-wide mb-2 px-1">
+                    ${dlg.title || `Bahagian ${dIdx + 1}`}
+                  </div>
+                  <div class="space-y-2.5">
+                    ${dlg.lines.map((l, lIdx) => {
+                      const isA = (lIdx % 2 === 0);
+                      const role = isA ? 'A' : 'B';
+                      const roleVoice = isA ? 'male' : 'female';
+                      return `
+                        <div id="rp-line-${dIdx}-${lIdx}" class="rp-line rp-role-${role} p-3 rounded-2xl ${isA ? 'bg-blue-950/50 border-2 border-blue-500/80 hover:border-blue-400 shadow-blue-950/40' : 'bg-pink-950/50 border-2 border-pink-500/80 hover:border-pink-400 shadow-pink-950/40'} flex items-center justify-between shadow-md transition-all">
+                          <div class="flex items-start space-x-3">
+                            <span class="w-7 h-7 rounded-full ${isA ? 'bg-blue-600 ring-2 ring-blue-400' : 'bg-pink-600 ring-2 ring-pink-400'} text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow">
+                              ${role}
+                            </span>
+                            <div>
+                              <div class="text-[11px] font-black ${isA ? 'text-blue-300' : 'text-pink-300'} mb-0.5">
+                                ${l.speaker} (${isA ? '👨 Suara Lelaki' : '👩 Suara Perempuan'})
+                              </div>
+                              <div class="text-base sm:text-lg font-black font-hanzi text-white">${l.hz}</div>
+                              <div class="rp-pinyin text-xs font-mono ${isA ? 'text-blue-200' : 'text-pink-200'} font-bold">${l.py}</div>
+                              <div class="rp-my text-xs text-slate-300 mt-1.5 p-2 rounded-xl bg-slate-900/80 border border-slate-700/80" style="display: none;">🎯 ${l.my}</div>
+                            </div>
+                          </div>
+
+                          <button onclick="playDialogueAudio(${slide.topic_num || topic_num}, ${dIdx}, ${lIdx}, '${l.hz}', '${roleVoice}')" class="p-2.5 rounded-xl ${isA ? 'bg-blue-900/80 hover:bg-blue-600 border border-blue-400 text-blue-200 hover:text-white' : 'bg-pink-900/80 hover:bg-pink-600 border border-pink-400 text-pink-200 hover:text-white'} transition shrink-0 ml-3 shadow-md" title="Mainkan sebutan (${isA ? 'Suara Lelaki' : 'Suara Perempuan'})">
+                            🔊
+                          </button>
+                        </div>
+                      `;
+                    }).join('')}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // 12. UJI KEFAHAMAN DIALOG (6 SOALAN, HANZI + PINYIN SAHAJA, NO BM)
+      else if (slide.type === 'dialogue_comprehension') {
+        contentHtml = `
+          <div>
+            <div class="border-b border-slate-800 pb-2 mb-3">
+              <span class="text-xs font-black uppercase tracking-wider text-sky-400">${slide.tag}</span>
+              <h2 class="text-lg sm:text-xl font-outfit font-black text-white">${slide.title}</h2>
+              <p class="text-xs text-slate-400 mt-0.5">${slide.subtitle}</p>
+            </div>
+
+            <!-- 6 COMPREHENSION QUESTIONS (Hanzi + Pinyin ONLY, NO BM) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[460px] overflow-y-auto pr-2 custom-scrollbar">
+              ${slide.questions.map((q, qIdx) => `
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5 flex flex-col justify-between shadow-sm">
+                  <div>
+                    <div class="flex items-start justify-between">
+                      <div>
+                        <div class="text-sm sm:text-base font-black font-hanzi text-white">
+                          ${qIdx + 1}. ${q.q_hz}
+                        </div>
+                        <div class="text-xs font-mono text-sky-400 font-bold mt-0.5">
+                          ${q.py}
+                        </div>
+                      </div>
+                      <button onclick="speakChinese('${q.q_hz}')" class="p-1.5 rounded-lg bg-slate-700 hover:bg-sky-600 text-slate-300 hover:text-white transition shrink-0 ml-2" title="Sebut Soalan">
+                        🔊
+                      </button>
+                    </div>
+
+                    <!-- 4 Options (Hanzi + Pinyin ONLY) -->
+                    <div class="mt-2.5 space-y-1.5">
+                      ${q.options.map((opt, oIdx) => `
+                        <button id="compre-btn-${qIdx}-${oIdx}" 
+                                onclick="checkCompreOption(${qIdx}, ${oIdx}, ${opt.correct ? 'true' : 'false'}, '${opt.hz}')"
+                                class="compre-btn w-full p-2 rounded-xl bg-slate-900/80 hover:bg-slate-700/80 border border-slate-700/70 text-left transition flex items-center justify-between">
+                          <div>
+                            <span class="font-bold text-xs text-slate-400 mr-1.5">${['A', 'B', 'C', 'D'][oIdx]}</span>
+                            <span class="font-hanzi font-bold text-xs sm:text-sm text-white">${opt.hz}</span>
+                            <span class="font-mono text-[11px] text-sky-300 ml-1.5 font-medium">(${opt.py})</span>
+                          </div>
+                          <span id="compre-icon-${qIdx}-${oIdx}" class="text-xs"></span>
+                        </button>
+                      `).join('')}
+                    </div>
+
+                    <!-- Hidden Scheme -->
+                    <div id="compre-ans-${qIdx}" class="hidden mt-2 p-2 rounded-xl bg-indigo-950/50 border border-indigo-700/50 text-xs">
+                      <div class="font-bold text-amber-300 font-hanzi">💡 Skema Jawapan:</div>
+                      <div class="text-white font-hanzi mt-0.5">${q.explain}</div>
+                    </div>
+                  </div>
+
+                  <div class="mt-2.5 pt-2 border-t border-slate-700/50 flex justify-end">
+                    <button id="compre-toggle-${qIdx}" onclick="toggleCompreAns(${qIdx})" class="text-xs text-slate-400 hover:text-white font-bold flex items-center space-x-1">
+                      <span>👁️ Dedahkan Skema Guru</span>
+                    </button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      viewport.innerHTML = contentHtml;
     }
 
-    /* Keyboard Shortcuts */
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+    // ==========================================
+    // INNER RENDERERS & HANDLERS
+    // ==========================================
+    function selectVocabWord(hz, idx) {
+      const slide = SLIDES[currentSlideIdx];
+      const word = slide.words.find(w => w.hz === hz);
+      if (!word) return;
+
+      currentVocabWord = word;
+      document.querySelectorAll('.vcard').forEach(c => c.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-950/30'));
+      const activeCard = document.getElementById(`vcard-${idx}`);
+      if (activeCard) activeCard.classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-950/30');
+
+      document.getElementById('vocab-sent-hz').textContent = word.exHz;
+      document.getElementById('vocab-sent-py').textContent = word.exPy;
+      document.getElementById('vocab-sent-my').textContent = `Maksud: "${word.exMy}"`;
+      document.getElementById('btn-vocab-sent-audio').setAttribute('onclick', `speakChinese('${word.exHz}')`);
+      speakChinese(word.hz);
+    }
+
+    // Game 1 Drag & Drop Handlers
+    function handleDragStart(e, hz, idx) {
+      e.dataTransfer.setData('text/plain', JSON.stringify({ hz, idx }));
+      selectedChip = { hz, idx };
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.currentTarget.classList.add('drag-target-hover');
+    }
+
+    function handleDragLeave(e) {
+      e.currentTarget.classList.remove('drag-target-hover');
+    }
+
+    function handleDrop(e, targetIdx, targetHz) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('drag-target-hover');
+      try {
+        const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+        validateMatch(data.hz, targetHz, data.idx, targetIdx);
+      } catch (err) {}
+    }
+
+    function selectChipToPlace(hz, idx) {
+      selectedChip = { hz, idx };
+      document.querySelectorAll('.word-chip').forEach(c => c.classList.remove('ring-2', 'ring-amber-400', 'scale-105'));
+      const el = document.getElementById(`chip-${idx}`);
+      if (el) el.classList.add('ring-2', 'ring-amber-400', 'scale-105');
+      speakChinese(hz);
+    }
+
+    function clickTargetSlot(targetIdx, targetHz) {
+      if (selectedChip) {
+        validateMatch(selectedChip.hz, targetHz, selectedChip.idx, targetIdx);
+      }
+    }
+
+    function validateMatch(chipHz, targetHz, chipIdx, targetIdx) {
+      const slotEl = document.getElementById(`target-slot-${targetIdx}`);
+      const dropzone = document.getElementById(`slot-dropzone-${targetIdx}`);
+      const chipEl = document.getElementById(`chip-${chipIdx}`);
+
+      if (chipHz === targetHz) {
+        matchedItems[targetIdx] = true;
+        dropzone.className = "w-full mt-1.5 py-1 px-1 rounded-xl bg-emerald-600 text-white text-center font-black text-xs shadow";
+        dropzone.innerHTML = `<span>✓ ${chipHz}</span>`;
+        if (chipEl) chipEl.style.display = 'none';
+        speakChinese(chipHz);
+        checkAllMatched();
+      } else {
+        slotEl.classList.add('shake-anim');
+        setTimeout(() => slotEl.classList.remove('shake-anim'), 400);
+      }
+      selectedChip = null;
+      document.querySelectorAll('.word-chip').forEach(c => c.classList.remove('ring-2', 'ring-amber-400', 'scale-105'));
+    }
+
+    function checkAllMatched() {
+      const slide = SLIDES[currentSlideIdx];
+      const count = Object.keys(matchedItems).length;
+      document.getElementById('match-counter').textContent = `${count} / ${slide.items.length} Selesai`;
+      if (count === slide.items.length) {
+        document.getElementById('match-win-banner').classList.remove('hidden');
+      }
+    }
+
+    function revealAllMatches() {
+      const slide = SLIDES[currentSlideIdx];
+      slide.items.forEach((it, idx) => {
+        matchedItems[idx] = true;
+        const dropzone = document.getElementById(`slot-dropzone-${idx}`);
+        if (dropzone) {
+          dropzone.className = "w-full mt-1.5 py-1 px-1 rounded-xl bg-indigo-600 text-white text-center font-black text-xs shadow";
+          dropzone.innerHTML = `<span>✓ ${it.hz}</span>`;
+        }
+        const chip = document.getElementById(`chip-${idx}`);
+        if (chip) chip.style.display = 'none';
+      });
+      checkAllMatched();
+    }
+
+    function resetMatchGame() {
+      renderSlide();
+    }
+
+    // Game 2 Listen Handlers
+    function checkListenChoice(itIdx, optIdx, isCorrect, targetHz) {
+      const btn = document.getElementById(`listen-btn-${itIdx}-${optIdx}`);
+      if (isCorrect) {
+        btn.className = "listen-opt-btn p-2 rounded-xl bg-emerald-600 border border-emerald-400 text-white font-black text-center shadow";
+        listenSelected[itIdx] = 10;
+        speakChinese(targetHz);
+      } else {
+        btn.className = "listen-opt-btn p-2 rounded-xl bg-rose-600 border border-rose-400 text-white font-black text-center shadow";
+        listenSelected[itIdx] = 0;
+      }
+      const totalScore = Object.values(listenSelected).reduce((a, b) => a + b, 0);
+      const slide = SLIDES[currentSlideIdx];
+      document.getElementById('listen-score').textContent = `⭐ Skor: ${totalScore} / ${slide.items.length * 10}`;
+    }
+
+    // Game 3 Quiz Renderer & Handlers
+    function renderQuizInnerHtml(slide) {
+      const q = slide.questions[quizCurrentIdx];
+      const totalQ = slide.questions.length;
+      return `
+        <div class="h-full flex flex-col justify-between">
+          <div class="border-b border-slate-800 pb-2 mb-3 flex items-center justify-between">
+            <div>
+              <span class="text-xs font-black uppercase tracking-wider text-amber-400">${slide.tag}</span>
+              <h2 class="text-lg sm:text-xl font-outfit font-black text-white">${slide.title}</h2>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="px-3 py-1 rounded-xl bg-amber-950/80 border border-amber-700/60 text-amber-400 font-mono text-xs font-black">
+                ⭐ Markah: ${quizScore} / 100
+              </span>
+              <span class="px-2.5 py-1 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs">
+                Soalan ${quizCurrentIdx + 1} / ${totalQ}
+              </span>
+            </div>
+          </div>
+
+          <!-- Question Box -->
+          <div class="flex-1 flex flex-col justify-center max-w-3xl mx-auto w-full my-auto">
+            <div class="p-4 sm:p-5 rounded-3xl bg-slate-800/90 border border-slate-700 shadow-xl mb-4">
+              <div class="text-[10px] font-black uppercase tracking-wider text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded-lg inline-block mb-2 border border-indigo-800/40">
+                Cabaran Soalan ${quizCurrentIdx + 1}
+              </div>
+              <div class="text-base sm:text-lg font-black text-white leading-relaxed">
+                ${q.q}
+              </div>
+            </div>
+
+            <!-- 4 Options -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+              ${q.options.map((opt, oIdx) => `
+                <button id="quiz-btn-${oIdx}" 
+                        onclick="answerQuizQuestion(${oIdx}, ${q.ans})" 
+                        class="quiz-opt-btn p-3 rounded-2xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700 hover:border-indigo-500 text-left transition flex items-center space-x-3 active:scale-95 shadow">
+                  <span class="w-7 h-7 rounded-full bg-slate-900 text-slate-300 font-black text-xs flex items-center justify-center shrink-0 border border-slate-700">
+                    ${['A', 'B', 'C', 'D'][oIdx]}
+                  </span>
+                  <span class="text-xs sm:text-sm font-bold text-slate-200 leading-snug">${opt}</span>
+                </button>
+              `).join('')}
+            </div>
+
+            <!-- Feedback & Next Button -->
+            <div id="quiz-feedback-box" class="hidden p-3 rounded-2xl bg-slate-800/90 border border-slate-700 flex items-center justify-between">
+              <div id="quiz-feedback-text" class="text-xs font-bold"></div>
+              <button onclick="nextQuizQuestion()" class="px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs shadow transition">
+                Soalan Seterusnya ➡️
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function answerQuizQuestion(selectedIdx, correctIdx) {
+      if (quizAnswered[quizCurrentIdx] !== undefined) return;
+      quizAnswered[quizCurrentIdx] = selectedIdx;
+
+      const q = SLIDES[currentSlideIdx].questions[quizCurrentIdx];
+      const isCorrect = (selectedIdx === correctIdx);
+      if (isCorrect) {
+        quizScore += 10;
+        document.getElementById(`quiz-btn-${selectedIdx}`).className = "quiz-opt-btn p-3 rounded-2xl bg-emerald-600 border border-emerald-400 text-white text-left transition flex items-center space-x-3 shadow";
+      } else {
+        document.getElementById(`quiz-btn-${selectedIdx}`).className = "quiz-opt-btn p-3 rounded-2xl bg-rose-600 border border-rose-400 text-white text-left transition flex items-center space-x-3 shadow";
+        document.getElementById(`quiz-btn-${correctIdx}`).className = "quiz-opt-btn p-3 rounded-2xl bg-emerald-600 border border-emerald-400 text-white text-left transition flex items-center space-x-3 shadow";
+      }
+
+      const fbBox = document.getElementById('quiz-feedback-box');
+      const fbText = document.getElementById('quiz-feedback-text');
+      fbBox.classList.remove('hidden');
+      if (isCorrect) {
+        fbText.className = "text-emerald-400 text-xs font-black";
+        fbText.textContent = "🎉 TEPAT SEKALI! (+10 Markah)";
+      } else {
+        fbText.className = "text-rose-400 text-xs font-black";
+        fbText.textContent = `❌ Kurang Tepat. Jawapan Betul: ${['A', 'B', 'C', 'D'][correctIdx]} (${q.hint || ''})`;
+      }
+    }
+
+    function nextQuizQuestion() {
+      const slide = SLIDES[currentSlideIdx];
+      if (quizCurrentIdx < slide.questions.length - 1) {
+        quizCurrentIdx++;
+        document.getElementById('slide-content').innerHTML = renderQuizInnerHtml(slide);
+      } else {
+        alert(`Tahniah! Kuiz Selesai! Skor Akhir Pelajar: ${quizScore} / 100 ⭐`);
+      }
+    }
+
+    // Sentence Practice Handler
+    function toggleSentenceAns(idx) {
+      const el = document.getElementById(`sent-ans-${idx}`);
+      const btn = document.getElementById(`sent-btn-${idx}`);
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        btn.textContent = '🙈 Sembunyikan Skema';
+      } else {
+        el.classList.add('hidden');
+        btn.textContent = '👁️ Dedahkan Skema Jawapan Guru';
+      }
+    }
+
+    // Comprehension Option Handler
+    function checkCompreOption(qIdx, oIdx, isCorrect, targetHz) {
+      const btn = document.getElementById(`compre-btn-${qIdx}-${oIdx}`);
+      const icon = document.getElementById(`compre-icon-${qIdx}-${oIdx}`);
+      if (isCorrect) {
+        btn.className = "compre-btn w-full p-2 rounded-xl bg-emerald-600 border border-emerald-400 text-white text-left transition flex items-center justify-between shadow";
+        icon.textContent = "✓ TEPAT";
+        speakChinese(targetHz);
+      } else {
+        btn.className = "compre-btn w-full p-2 rounded-xl bg-rose-600 border border-rose-400 text-white text-left transition flex items-center justify-between shadow";
+        icon.textContent = "✗ SALAH";
+      }
+    }
+
+    function toggleCompreAns(qIdx) {
+      const el = document.getElementById(`compre-ans-${qIdx}`);
+      const btn = document.getElementById(`compre-toggle-${qIdx}`);
+      if (el.classList.contains('hidden')) {
+        el.classList.remove('hidden');
+        btn.textContent = '🙈 Sembunyikan Skema';
+      } else {
+        el.classList.add('hidden');
+        btn.textContent = '👁️ Dedahkan Skema Guru';
+      }
+    }
+
+    // Roleplay & Dialogue BM & Pinyin Toggle Handlers
+    let isBmHidden = true; // Hidden by default!
+    function toggleBmTranslation() {
+      isBmHidden = !isBmHidden;
+      const label = isBmHidden ? '👁️ Tunjuk Maksud BM' : '🙈 Sembunyi Maksud BM';
+      const b1 = document.getElementById('rf-my-dlg');
+      const b2 = document.getElementById('rf-my-rp');
+      if (b1) b1.innerHTML = `<span>${label}</span>`;
+      if (b2) b2.innerHTML = `<span>${label}</span>`;
+      document.querySelectorAll('.dlg-my, .rp-my').forEach(el => {
+        el.style.display = isBmHidden ? 'none' : 'block';
+      });
+    }
+
+    function togglePinyinRoleplay() {
+      isRoleplayPinyinHidden = !isRoleplayPinyinHidden;
+      document.getElementById('rf-pinyin').textContent = isRoleplayPinyinHidden ? '👁️ Tunjuk Pinyin' : '👁️ Sembunyi Pinyin';
+      document.querySelectorAll('.rp-pinyin').forEach(p => {
+        p.style.display = isRoleplayPinyinHidden ? 'none' : 'block';
+      });
+    }
+
+    function playDialogueAudio(topic, dIdx, lIdx, text, role) {
+      if (currentAudioObj) {
+        currentAudioObj.pause();
+        currentAudioObj.currentTime = 0;
+      }
+      const tNum = topic || currentTopicNum || 1;
+      const audioPath = `audio/dialogues/t${tNum}_d${dIdx}_l${lIdx}.mp3`;
+      const audio = new Audio(audioPath);
+      currentAudioObj = audio;
+      audio.playbackRate = audioRate;
+      audio.play().catch(err => {
+        console.log("Audio file play fallback to SpeechSynthesis:", err);
+        speakChinese(text, role);
+      });
+    }
+
+    function playAllDialogueRoleplay() {
+      const slide = SLIDES[currentSlideIdx];
+      if (!slide || !slide.dialogues) return;
+      
+      const allLines = [];
+      const tNum = slide.topic_num || currentTopicNum || 1;
+      slide.dialogues.forEach((dlg, dIdx) => {
+        dlg.lines.forEach((l, lIdx) => {
+          const isA = (lIdx % 2 === 0);
+          allLines.push({
+            id: `rp-line-${dIdx}-${lIdx}`,
+            hz: l.hz,
+            tNum: tNum,
+            dIdx: dIdx,
+            lIdx: lIdx,
+            roleVoice: isA ? 'male' : 'female'
+          });
+        });
+      });
+
+      if (currentAudioObj) {
+        currentAudioObj.pause();
+        currentAudioObj.currentTime = 0;
+      }
+
+      let pIdx = 0;
+      function playNext() {
+        if (pIdx >= allLines.length) {
+          document.querySelectorAll('.rp-line').forEach(el => el.classList.remove('ring-4', 'ring-amber-400', 'bg-amber-950/60'));
+          return;
+        }
+        document.querySelectorAll('.rp-line').forEach(el => el.classList.remove('ring-4', 'ring-amber-400', 'bg-amber-950/60'));
+        const item = allLines[pIdx];
+        const activeEl = document.getElementById(item.id);
+        if (activeEl) {
+          activeEl.classList.add('ring-4', 'ring-amber-400', 'bg-amber-950/60');
+          activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        const audioPath = `audio/dialogues/t${item.tNum}_d${item.dIdx}_l${item.lIdx}.mp3`;
+        const audio = new Audio(audioPath);
+        currentAudioObj = audio;
+        audio.playbackRate = audioRate;
+        
+        audio.onended = () => {
+          pIdx++;
+          setTimeout(playNext, 600);
+        };
+        audio.onerror = () => {
+          speakChinese(item.hz, item.roleVoice);
+          pIdx++;
+          setTimeout(playNext, 2500);
+        };
+        audio.play().catch(e => {
+          speakChinese(item.hz, item.roleVoice);
+          pIdx++;
+          setTimeout(playNext, 2500);
+        });
+      }
+      playNext();
+    }
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
         nextSlide();
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
         e.preventDefault();
         prevSlide();
-      } else if (e.key.toLowerCase() === 'f') {
+      } else if (e.key === 'f' || e.key === 'F') {
         toggleFullscreen();
-      } else if (e.key.toLowerCase() === 'h') {
-        window.location.href = 'index.html';
       }
     });
 
-    // Initialize
-    window.addEventListener('DOMContentLoaded', () => {
-      renderSlide();
-    });
+    // Initial Load
+    renderSlide();
   </script>
 </body>
 </html>
