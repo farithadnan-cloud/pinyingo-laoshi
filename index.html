@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>PinyinGo Guru - Portal Slaid Pengajaran Kelas (ELM 4322)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+SC:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            outfit: ['"Outfit"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            hanzi: ['"Noto Sans SC"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #090d16;
+      color: #f8fafc;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-outfit { font-family: 'Outfit', sans-serif; }
+    .font-hanzi { font-family: 'Noto Sans SC', sans-serif; }
+    .slide-card {
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .slide-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -10px rgba(99, 102, 241, 0.25);
+      border-color: #6366f1;
+    }
+    .slide-card:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-100 antialiased selection:bg-indigo-500 selection:text-white pb-16">
+
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-md">
+    <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 via-indigo-600 to-cyan-400 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-600/30">
+          师
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="font-outfit font-black text-lg text-white tracking-tight">PinyinGo Guru</h1>
+            <span class="px-2 py-0.5 text-[10px] font-extrabold rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Mod Mengajar</span>
+          </div>
+          <p class="text-xs text-slate-400 font-semibold leading-tight">Portal Slaid Projektor & Smartboard • Modul ELM 4322 KV</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="text-xs font-bold text-indigo-300 bg-indigo-950/70 border border-indigo-800/80 px-3 py-1 rounded-full hidden sm:inline-block">
+          7 Topik Slaid Lengkap
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 py-6 flex-grow w-full">
+    
+    <!-- Hero Banner (Teacher Presentation Mode) -->
+    <div class="bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950 rounded-3xl p-6 sm:p-8 border border-indigo-500/30 shadow-2xl mb-8 relative overflow-hidden">
+      <div class="relative z-10 max-w-xl">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-extrabold mb-3 border border-indigo-500/30">
+          <span>📽️</span>
+          <span>Slaid Pengajaran Kelas & Projektor</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-outfit font-black text-white leading-tight">
+          Selamat Mengajar, Cikgu!
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+          Pilih mana-mana topik di bawah untuk melancarkan <strong>Slaid Interaktif Skrin Penuh</strong>. Lengkap dengan sebutan audio penutur jati 🔊, teks Hanzi gergasi, rumus pola ayat, situasi dialog, dan aktiviti soal jawab kelas.
+        </p>
+        <div class="mt-4 flex flex-wrap items-center gap-3 text-xs text-slate-400">
+          <span class="flex items-center space-x-1"><span>⌨️</span><span>Kekunci ➔ / ⬅️ untuk navigasi slaid</span></span>
+          <span class="flex items-center space-x-1"><span>⛶</span><span>Tekan kekunci [F] untuk Skrin Penuh</span></span>
+        </div>
+      </div>
+      <!-- Background Motif -->
+      <div class="absolute -right-4 -bottom-6 text-9xl opacity-10 select-none font-hanzi font-black text-indigo-400">
+        讲堂
+      </div>
+    </div>
+
+    <!-- Topics Grid (7 Slide Topics) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+      <!-- Topik 1 -->
+      <a href="slide1.html" class="slide-card bg-slate-900/90 rounded-3xl p-5 border border-slate-800 shadow-sm flex flex-col justify-between group block">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-2xl group-hover:scale-105 transition">
+              🍎
+            </div>
+            <span class="px-2.5 py-0.5 text-[10px] font-black rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 uppercase tracking-wider">
+              Topik 1
+            </span>
+          </div>
+          <div class="text-xs font-bold text-slate-400 font-hanzi">买食物 • Mǎi shíwù</div>
+          <h3 class="text-lg font-outfit font-black text-white group-hover:text-indigo-400 transition mt-0.5">
+            Membeli Makanan
+          </h3>
+          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+            Slaid kosa kata buah-buahan, hidangan restoran, tanya harga Ringgit Malaysia & dialog pesanan.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-indigo-400">
+          <span>8 Slaid Pengajaran</span>
+          <span class="w-7 h-7 rounded-full bg-indigo-600/30 group-hover:bg-indigo-600 text-white flex items-center justify-center transition">➔</span>
+        </div>
+      </a>
+
+      <!-- Topik 2 -->
+      <a href="slide2.html" class="slide-card bg-slate-900/90 rounded-3xl p-5 border border-slate-800 shadow-sm flex flex-col justify-between group block">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center text-2xl group-hover:scale-105 transition">
+              👔
+            </div>
+            <span class="px-2.5 py-0.5 text-[10px] font-black rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/30 uppercase tracking-wider">
+              Topik 2
+            </span>
+          </div>
+          <div class="text-xs font-bold text-slate-400 font-hanzi">买服装 • Mǎi fúzhuāng</div>
+          <h3 class="text-lg font-outfit font-black text-white group-hover:text-indigo-400 transition mt-0.5">
+            Membeli Pakaian
+          </h3>
+          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+            Slaid penjodoh bilangan (件, 条, 双), warna pakaian, saiz baju (大, 中, 小号) & tawaran diskaun.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-indigo-400">
+          <span>8 Slaid Pengajaran</span>
+          <span class="w-7 h-7 rounded-full bg-indigo-600/30 group-hover:bg-indigo-600 text-white flex items-center justify-center transition">➔</span>
+        </div>
+      </a>
+
+      <!-- Topik 3 -->
+      <a href="slide3.html" class="slide-card bg-slate-900/90 rounded-3xl p-5 border border-slate-800 shadow-sm flex flex-col justify-between group block">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center text-2xl group-hover:scale-105 transition">
+              🏸
+            </div>
+            <span class="px-2.5 py-0.5 text-[10px] font-black rounded-full bg-teal-500/10 text-teal-300 border border-teal-500/30 uppercase tracking-wider">
+              Topik 3
+            </span>
+          </div>
+          <div class="text-xs font-bold text-slate-400 font-hanzi">我的爱好 • Wǒ de àihào</div>
+          <h3 class="text-lg font-outfit font-black text-white group-hover:text-indigo-400 transition mt-0.5">
+            Hobi Saya
+          </h3>
+          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+            Slaid sukan riadah (badminton, bola sepak, bola keranjang, renang), perbezaan kata kerja 打 vs 踢 & hobi seni.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-indigo-400">
+          <span>8 Slaid Pengajaran</span>
+          <span class="w-7 h-7 rounded-full bg-indigo-600/30 group-hover:bg-indigo-600 text-white flex items-center justify-center transition">➔</span>
+        </div>
+      </a>
+
+      <!-- Topik 4 -->
+      <a href="slide4.html" class="slide-card bg-slate-900/90 rounded-3xl p-5 border border-indigo-500/40 shadow-sm flex flex-col justify-between group block relative overflow-hidden">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 flex items-center justify-center text-2xl group-hover:scale-105 transition">
+              🏢
+            </div>
+            <span class="px-2.5 py-0.5 text-[10px] font-black rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 uppercase tracking-wider">
+              Topik 4 • Popular
+            </span>
+          </div>
+          <div class="text-xs font-bold text-slate-400 font-hanzi">在办公室 • Zài bàngōngshì</div>
+          <h3 class="text-lg font-outfit font-black text-white group-hover:text-indigo-400 transition mt-0.5">
+            Di Pejabat
+          </h3>
+          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+            Slaid kedudukan arah meja kerja (atas, bawah, depan, belakang, tepi), alatan pejabat & kehadiran pengurus.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-indigo-400">
+          <span>8 Slaid Pengajaran</span>
+          <span class="w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center transition">➔</span>
+        </div>
+      </a>
+
+      <!-- Topik 5 -->
+      <a href="slide5.html" class="slide-card bg-slate-900/90 rounded-3xl p-5 border border-slate-800 shadow-sm flex flex-col justify-between group block">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-2xl group-hover:scale-105 transition">
+              🗺️
+            </div>
+            <span class="px-2.5 py-0.5 text-[10px] font-black rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 uppercase tracking-wider">
+              Topik 5
+            </span>
+          </div>
+          <div class="text-xs font-bold text-slate-400 font-hanzi">地名 • Dìmíng</div>
+          <h3 class="text-lg font-outfit font-black text-white group-hover:text-indigo-400 transition mt-0.5">
+            Nama Tempat
+          </h3>
+          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+            Slaid negeri di Malaysia, ibu negeri, balai polis, balai bomba, hospital, sekolah, pejabat pos & bank.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-indigo-400">
+          <span>8 Slaid Pengajaran</span>
+          <span class="w-7 h-7 rounded-full bg-indigo-600/30 group-hover:bg-indigo-600 text-white flex items-center justify-center transition">➔</span>
+        </div>
+      </a>
+
+      <!-- Topik 6 -->
+      <a href="slide6.html" class="slide-card bg-slate-900/90 rounded-3xl p-5 border border-slate-800 shadow-sm flex flex-col justify-between group block">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center text-2xl group-hover:scale-105 transition">
+              🚌
+            </div>
+            <span class="px-2.5 py-0.5 text-[10px] font-black rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/30 uppercase tracking-wider">
+              Topik 6
+            </span>
+          </div>
+          <div class="text-xs font-bold text-slate-400 font-hanzi">公共交通 • Gōnggòng jiāotōng</div>
+          <h3 class="text-lg font-outfit font-black text-white group-hover:text-indigo-400 transition mt-0.5">
+            Kenderaan Awam & Arah
+          </h3>
+          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+            Slaid mod pengangkutan (bas, teksi, keretapi, MRT, kapal terbang), arah jalan (kiri, kanan, terus) & Menara KLCC.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-indigo-400">
+          <span>8 Slaid Pengajaran</span>
+          <span class="w-7 h-7 rounded-full bg-indigo-600/30 group-hover:bg-indigo-600 text-white flex items-center justify-center transition">➔</span>
+        </div>
+      </a>
+
+      <!-- Topik 7 -->
+      <a href="slide7.html" class="slide-card bg-slate-900/90 rounded-3xl p-5 border border-slate-800 shadow-sm flex flex-col justify-between group block sm:col-span-2">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center text-2xl group-hover:scale-105 transition">
+              💼
+            </div>
+            <span class="px-2.5 py-0.5 text-[10px] font-black rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/30 uppercase tracking-wider">
+              Topik 7
+            </span>
+          </div>
+          <div class="text-xs font-bold text-slate-400 font-hanzi">面试 • Miànshì</div>
+          <h3 class="text-lg font-outfit font-black text-white group-hover:text-indigo-400 transition mt-0.5">
+            Temuduga Kerjaya
+          </h3>
+          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+            Slaid komunikasi temu duga rasmi, pengenalan diri calon, resume (履历表), jurusan kolej vokasional & etika profesional.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-indigo-400">
+          <span>8 Slaid Pengajaran</span>
+          <span class="w-7 h-7 rounded-full bg-indigo-600/30 group-hover:bg-indigo-600 text-white flex items-center justify-center transition">➔</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- WATERMARK (BOTTOM LEFT - AS REQUESTED) -->
+  <div class="fixed bottom-2.5 left-3 z-50 pointer-events-none select-none text-[11px] font-bold text-slate-400 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-700 shadow-xs flex items-center space-x-1.5">
+    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 inline-block"></span>
+    <span>Hajar Nur Atiqah Binti Mohd Adam</span>
+  </div>
+
+</body>
+</html>

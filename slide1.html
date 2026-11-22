@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Slaid Pengajaran Topik 1: Membeli Makanan (买食物) - PinyinGo Guru</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+SC:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            outfit: ['"Outfit"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            hanzi: ['"Noto Sans SC"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      overflow: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-outfit { font-family: 'Outfit', sans-serif; }
+    .font-hanzi { font-family: 'Noto Sans SC', sans-serif; }
+    ruby { ruby-align: center; ruby-position: over; }
+    rt {
+      font-size: 0.52em;
+      font-weight: 700;
+      color: #818cf8;
+      letter-spacing: 0.5px;
+    }
+    .slide-screen {
+      transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+    }
+    .slide-enter {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    .slide-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    /* Custom button bounce */
+    .btn-action:active {
+      transform: scale(0.95);
+    }
+    /* Custom scrollbar */
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- ==================== TOP NAVIGATION BAR ==================== -->
+  <header class="w-full bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 py-2.5 flex items-center justify-between z-40 shrink-0">
+    <!-- Brand / Topic Info -->
+    <div class="flex items-center space-x-3">
+      <a href="index.html" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center justify-center text-sm font-bold transition shadow-xs" title="Kembali ke Portal Utama">
+        🏠
+      </a>
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center text-white font-black text-lg shadow-md">
+        🍎
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <span class="px-2 py-0.5 text-[10px] font-black rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 uppercase tracking-wider">
+            Slaid Guru • Topik 1
+          </span>
+          <h1 class="text-sm sm:text-base font-outfit font-black text-white tracking-tight">
+            Membeli Makanan • <span class="font-hanzi text-indigo-300">买食物</span>
+          </h1>
+        </div>
+        <p class="text-[11px] text-slate-400 font-semibold leading-tight">Mǎi shíwù</p>
+      </div>
+    </div>
+
+    <!-- Quick Tools: Audio Speed, Fullscreen, Self-Learning Link -->
+    <div class="flex items-center space-x-2">
+      <!-- Voice Rate -->
+      <button onclick="toggleAudioSpeed()" class="h-8 px-2.5 rounded-full bg-slate-800 hover:bg-slate-700 text-indigo-300 border border-slate-700 flex items-center space-x-1 text-xs font-bold transition" title="Laras Kelajuan Suara Guru">
+        <span>🔊</span>
+        <span id="speed-badge">1.0x</span>
+      </button>
+      <!-- Fullscreen button -->
+      <button onclick="toggleFullscreen()" class="h-8 px-3 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hidden sm:flex items-center space-x-1 text-xs font-bold transition" title="Skrin Penuh Projektor (Kekunci F)">
+        <span id="fs-icon">⛶</span>
+        <span class="text-[11px]">Skrin Penuh</span>
+      </button>
+      <!-- Switch to Student Self-Learn Mode -->
+      <a href="topik1.html" class="h-8 px-3 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white flex items-center space-x-1.5 text-xs font-extrabold transition shadow-md shadow-emerald-900/30">
+        <span>📱</span>
+        <span>Mod Kendiri Murid</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ==================== PROGRESS BAR ==================== -->
+  <div class="w-full bg-slate-900 h-1.5 shrink-0 relative overflow-hidden">
+    <div id="slide-progress" class="bg-gradient-to-r from-indigo-500 to-cyan-400 h-full transition-all duration-300" style="width: 12.5%;"></div>
+  </div>
+
+  <!-- ==================== MAIN SLIDE STAGE ==================== -->
+  <main class="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-8 py-4 sm:py-6 flex items-center justify-center overflow-hidden relative">
+    
+    <!-- Slide Container (Dynamic) -->
+    <div id="slide-viewport" class="w-full h-full max-h-[82vh] bg-slate-900/95 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col justify-between slide-screen slide-active custom-scroll overflow-y-auto relative">
+      <!-- Injected by JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- ==================== BOTTOM CONTROLLER ==================== -->
+  <footer class="w-full bg-slate-900/90 backdrop-blur-md border-t border-slate-800 px-4 py-3 flex items-center justify-between z-40 shrink-0">
+    <!-- Left: Watermark & Keyboard Help -->
+    <div class="flex items-center space-x-3 text-xs text-slate-400 font-semibold">
+      <div class="flex items-center space-x-1.5 bg-slate-800/80 px-2.5 py-1 rounded-full border border-slate-700/80 text-[11px]">
+        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 inline-block"></span>
+        <span class="text-slate-300 font-bold">Hajar Nur Atiqah Binti Mohd Adam</span>
+      </div>
+      <span class="hidden md:inline text-slate-500 text-[11px]">Guna kekunci ⬅️ / ➔ atau Spacebar</span>
+    </div>
+
+    <!-- Center: Slide Indicator Pills -->
+    <div id="slide-dots" class="flex items-center space-x-1.5">
+      <!-- Dots generated by JS -->
+    </div>
+
+    <!-- Right: Navigation Buttons -->
+    <div class="flex items-center space-x-2">
+      <button onclick="prevSlide()" id="btn-prev" class="h-9 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-30 disabled:pointer-events-none text-slate-200 border border-slate-700 font-bold text-xs flex items-center space-x-1 btn-action transition">
+        <span>⬅️</span>
+        <span class="hidden sm:inline">Terdahulu</span>
+      </button>
+      <div class="px-2.5 py-1 rounded-xl bg-indigo-950/60 border border-indigo-800/60 text-indigo-300 font-outfit font-black text-xs">
+        <span id="slide-num-indicator">1 / 8</span>
+      </div>
+      <button onclick="nextSlide()" id="btn-next" class="h-9 px-5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-extrabold text-xs flex items-center space-x-1 shadow-md shadow-indigo-900/40 btn-action transition">
+        <span class="hidden sm:inline">Seterusnya</span>
+        <span>➔</span>
+      </button>
+    </div>
+  </footer>
+
+  <!-- WATERMARK (BOTTOM LEFT - AS REQUESTED) -->
+  <div class="fixed bottom-2.5 left-3 z-50 pointer-events-none select-none text-[11px] font-bold text-slate-400 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-700 shadow-xs flex items-center space-x-1.5">
+    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 inline-block"></span>
+    <span>Hajar Nur Atiqah Binti Mohd Adam</span>
+  </div>
+
+  <!-- ==================== JAVASCRIPT SLIDE ENGINE ==================== -->
+  <script>
+    const SLIDES = [{"type": "title", "tag": "TOPIK 1: MEMBELI MAKANAN", "hz": "第一单元：买食物", "py": "Dì-yī dānyuán: Mǎi shíwù", "objectives": ["Menyebut dan mengecam 20+ kosa kata buah-buahan, makanan, dan minuman dalam Hanyu Pinyin yang betul.", "Menguasai formula tatabahasa bertanya harga dalam Ringgit Malaysia (令吉 Língjí).", "Melakonkan dialog membeli makanan di pasar dan memesan hidangan di restoran dengan lancar."], "banner": "📽️ Slaid Pengajaran Guru • Bilik Darjah & Projektor Pintar"}, {"type": "vocab_grid", "tag": "KOSA KATA BAHARU (生词一)", "subtitle": "Buah-buahan, Timbangan & Penjual", "words": [{"hz": "苹果", "py": "píngguǒ", "my": "buah epal", "type": "k.n"}, {"hz": "葡萄", "py": "pútao", "my": "buah anggur", "type": "k.n"}, {"hz": "芒果", "py": "mángguǒ", "my": "buah mangga", "type": "k.n"}, {"hz": "西瓜", "py": "xīguā", "my": "buah tembikai", "type": "k.n"}, {"hz": "香蕉", "py": "xiāngjiāo", "my": "buah pisang", "type": "k.n"}, {"hz": "橙子", "py": "chéngzi", "my": "buah oren", "type": "k.n"}, {"hz": "老板", "py": "lǎobǎn", "my": "bos / peniaga", "type": "k.n"}, {"hz": "公斤", "py": "gōngjīn", "my": "kilogram (kg)", "type": "p.b"}, {"hz": "多少", "py": "duōshao", "my": "berapa", "type": "k.g"}, {"hz": "钱", "py": "qián", "my": "duit / wang", "type": "k.n"}]}, {"type": "vocab_grid", "tag": "KOSA KATA BAHARU (生词二)", "subtitle": "Restoran, Makanan & Minuman", "words": [{"hz": "餐厅", "py": "cāntīng", "my": "restoran", "type": "k.n"}, {"hz": "服务员", "py": "fúwùyuán", "my": "pelayan restoran", "type": "k.n"}, {"hz": "炒饭", "py": "chǎofàn", "my": "nasi goreng", "type": "k.n"}, {"hz": "炒面", "py": "chǎomiàn", "my": "mee goreng", "type": "k.n"}, {"hz": "鸡肉", "py": "jīròu", "my": "daging ayam", "type": "k.n"}, {"hz": "鱼", "py": "yú", "my": "ikan", "type": "k.n"}, {"hz": "喝茶", "py": "hē chá", "my": "minum teh", "type": "k.k"}, {"hz": "果汁", "py": "guǒzhī", "my": "jus buah", "type": "k.n"}, {"hz": "太贵", "py": "tài guì", "my": "terlalu mahal", "type": "k.s"}, {"hz": "找钱", "py": "zhǎo qián", "my": "wang baki", "type": "k.k"}]}, {"type": "grammar", "tag": "RUMUS & POLA AYAT (语法 & 句型)", "title": "Formula Bertanya Harga & Membeli Makanan", "patterns": [{"formula": "Kata Nama (Buah) + 一公斤 + 多少钱？", "explain": "Digunakan untuk menanyakan harga barangan per kilogram.", "exampleHz": "苹果一公斤多少钱？", "examplePy": "Píngguǒ yī gōngjīn duōshao qián?", "exampleMy": "Berapakah harga satu kilogram epal?"}, {"formula": "Subjek + 想买 + [Bilangan] + 公斤 + [Barang]", "explain": "Menyatakan hasrat membeli kuantiti buah atau barangan.", "exampleHz": "我想买两公斤苹果。", "examplePy": "Wǒ xiǎng mǎi liǎng gōngjīn píngguǒ.", "exampleMy": "Saya ingin beli dua kilogram epal."}, {"formula": "请给我 + 一杯 / 一盘 + [Makanan / Minuman]", "explain": "Frasa sopan memesan hidangan di restoran.", "exampleHz": "服务员，请给我一杯茶。", "examplePy": "Fúwùyuán, qǐng gěi wǒ yī bēi chá.", "exampleMy": "Pelayan, tolong berikan saya secawan teh."}]}, {"type": "dialogue", "tag": "TEKS DIALOG 1 (对话一)", "title": "苹果一公斤多少钱？(Membeli Buah di Pasar)", "lines": [{"speaker": "老板 (Bos)", "hz": "你好！你想买什么水果？", "py": "Nǐ hǎo! Nǐ xiǎng mǎi shénme shuǐguǒ?", "my": "Helo! Awak mahu beli buah apa?"}, {"speaker": "哈山 (Hasan)", "hz": "老板，苹果一公斤多少钱？", "py": "Lǎobǎn, píngguǒ yī gōngjīn duōshao qián?", "my": "Bos, buah epal satu kilogram berapa ringgit?"}, {"speaker": "老板 (Bos)", "hz": "一公斤八令吉，你要买多少？", "py": "Yī gōngjīn bā língjí, nǐ yào mǎi duōshǎo?", "my": "Satu kilo lapan ringgit, awak nak beli berapa?"}, {"speaker": "哈山 (Hasan)", "hz": "请给我两公斤苹果。", "py": "Qǐng gěi wǒ liǎng gōngjīn píngguǒ.", "my": "Sila berikan saya dua kilogram epal."}, {"speaker": "老板 (Bos)", "hz": "一共十六令吉。谢谢！", "py": "Yígòng shíliù língjí. Xièxie!", "my": "Jumlah semua enam belas ringgit. Terima kasih!"}]}, {"type": "dialogue", "tag": "TEKS DIALOG 2 (对话二)", "title": "在餐厅点餐 (Memesan Hidangan di Restoran)", "lines": [{"speaker": "服务员 (Pelayan)", "hz": "您好！请问您想吃什么？", "py": "Nín hǎo! Qǐngwèn nín xiǎng chī shénme?", "my": "Selamat sejahtera! Anda ingin makan apa?"}, {"speaker": "哈山 (Hasan)", "hz": "我想吃一盘鸡肉炒饭。", "py": "Wǒ xiǎng chī yī pán jīròu chǎofàn.", "my": "Saya mahu makan sepinggan nasi goreng ayam."}, {"speaker": "服务员 (Pelayan)", "hz": "好的，请问想喝什么饮料？", "py": "Hǎo de, qǐngwèn xiǎng hē shénme yǐnliào?", "my": "Baiklah, tumpang tanya mahu minum apa?"}, {"speaker": "哈山 (Hasan)", "hz": "请给我一杯热茶，谢谢！", "py": "Qǐng gěi wǒ yī bēi rè chá, xièxie!", "my": "Tolong berikan saya secawan teh panas, terima kasih!"}]}, {"type": "class_activity", "tag": "AKTIVITI INTERAKTIF KELAS (课堂互动)", "title": "Soal Jawab Spontan Guru & Pelajar", "questions": [{"q": "1. Apakah maksud perkataan '多少钱 (duōshao qián)'?", "a": "Berapakah harganya / Berapa duit?"}, {"q": "2. Bagaimana menyebut 'dua kilogram' dalam Mandarin?", "a": "两公斤 (liǎng gōngjīn) - Guna 'liǎng' bukan 'èr'!"}, {"q": "3. Sambungkan frasa pesanan ini: '请给我一杯____。'?", "a": "茶 (chá - teh) atau 果汁 (guǒzhī - jus buah)."}, {"q": "4. Apakah panggilan untuk pelayan restoran?", "a": "服务员 (fúwùyuán)."}]}, {"type": "summary", "tag": "RUMUSAN KELAS & TUGASAN KENDIRI", "title": "Tahniah! Selesai Pembelajaran Topik 1", "points": ["Murid kini mampu bertanya harga barangan dan menyebut nama buah-buahan asas.", "Murid mampu membuat pesanan makanan dan minuman dengan sopan.", "Sila buka modul latihan kendiri PinyinGo untuk melengkapkan 20 soalan Bina Kata dan latihan sebutan suara!"], "selfLearnUrl": "topik1.html"}];
+    let currentSlideIdx = 0;
+    let audioRate = 1.0;
+    const rates = [0.75, 1.0, 1.25];
+    let ratePointer = 1;
+
+    /* Speech Synthesis */
+    function speakChinese(text) {
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const clean = text.replace(/[\(（].*?[\)）]/g, '').trim();
+      const utter = new SpeechSynthesisUtterance(clean);
+      utter.lang = 'zh-CN';
+      utter.rate = audioRate;
+      utter.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const zhVoice = voices.find(v => v.lang.includes('zh') || v.lang.includes('cmn'));
+      if (zhVoice) utter.voice = zhVoice;
+
+      window.speechSynthesis.speak(utter);
+    }
+
+    function toggleAudioSpeed() {
+      ratePointer = (ratePointer + 1) % rates.length;
+      audioRate = rates[ratePointer];
+      document.getElementById('speed-badge').textContent = audioRate + 'x';
+    }
+
+    /* Fullscreen Toggle */
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {});
+        document.getElementById('fs-icon').textContent = "✕";
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+        document.getElementById('fs-icon').textContent = "⛶";
+      }
+    }
+
+    /* Render Current Slide */
+    function renderSlide() {
+      const slide = SLIDES[currentSlideIdx];
+      const total = SLIDES.length;
+      const viewport = document.getElementById('slide-viewport');
+
+      // Update Top Progress Bar & Indicator
+      const pct = ((currentSlideIdx + 1) / total) * 100;
+      document.getElementById('slide-progress').style.width = pct + '%';
+      document.getElementById('slide-num-indicator').textContent = `${currentSlideIdx + 1} / ${total}`;
+
+      // Update Nav Buttons
+      document.getElementById('btn-prev').disabled = (currentSlideIdx === 0);
+      const nextBtn = document.getElementById('btn-next');
+      if (currentSlideIdx === total - 1) {
+        nextBtn.innerHTML = `<span>Tamat 🏁</span>`;
+      } else {
+        nextBtn.innerHTML = `<span class="hidden sm:inline">Seterusnya</span><span>➔</span>`;
+      }
+
+      // Update Dots
+      const dotsContainer = document.getElementById('slide-dots');
+      dotsContainer.innerHTML = '';
+      SLIDES.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `w-2.5 h-2.5 rounded-full transition-all ${idx === currentSlideIdx ? 'bg-indigo-400 w-6' : 'bg-slate-700 hover:bg-slate-500'}`;
+        dot.onclick = () => goToSlide(idx);
+        dot.title = `Lompat ke Slaid ${idx + 1}`;
+        dotsContainer.appendChild(dot);
+      });
+
+      // Viewport Animation
+      viewport.classList.remove('slide-active');
+      viewport.classList.add('slide-enter');
+
+      setTimeout(() => {
+        let contentHtml = '';
+
+        if (slide.type === 'title') {
+          contentHtml = `
+            <div class="flex flex-col items-center justify-center text-center my-auto py-6">
+              <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-black uppercase tracking-wider mb-4">
+                <span>🍎</span>
+                <span>${slide.tag}</span>
+              </div>
+              <h1 class="text-4xl sm:text-6xl font-hanzi font-black text-white tracking-wide mb-3 flex items-center justify-center space-x-4">
+                <span>${slide.hz}</span>
+                <button onclick="speakChinese('${slide.hz}')" class="w-12 h-12 rounded-2xl bg-indigo-600/30 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/40 flex items-center justify-center text-xl transition active:scale-90" title="Dengar Sebutan">
+                  🔊
+                </button>
+              </h1>
+              <p class="text-lg sm:text-2xl font-sans font-bold text-cyan-400 mb-8">${slide.py}</p>
+
+              <!-- Objectives Box -->
+              <div class="w-full max-w-2xl bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 sm:p-6 text-left shadow-lg">
+                <div class="flex items-center space-x-2 text-indigo-400 font-extrabold text-sm mb-3">
+                  <span>🎯</span>
+                  <span>HASIL PEMBELAJARAN (OBJEKTIF MODUL KV):</span>
+                </div>
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-300 font-medium">
+                  ${slide.objectives.map(obj => `
+                    <li class="flex items-start space-x-2.5">
+                      <span class="text-emerald-400 font-bold">✓</span>
+                      <span>${obj}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <div class="mt-8 text-xs text-slate-500 font-semibold">
+                Tekan ➔ atau Spacebar untuk memulakan sesi pengajaran kelas.
+              </div>
+            </div>
+          `;
+        } else if (slide.type === 'vocab_grid') {
+          contentHtml = `
+            <div>
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div>
+                  <span class="text-xs font-black uppercase tracking-wider text-indigo-400">${slide.tag}</span>
+                  <h2 class="text-xl sm:text-2xl font-outfit font-black text-white">${slide.subtitle}</h2>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs font-bold text-slate-400 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
+                    Klik perkataan untuk mendengar sebutan 🔊
+                  </span>
+                </div>
+              </div>
+
+              <!-- Vocab Grid (Large Cards for Screen/Projector) -->
+              <div class="grid grid-cols-2 sm:grid-cols-5 gap-3.5">
+                ${slide.words.map(w => `
+                  <button onclick="speakChinese('${w.hz}')" class="bg-slate-800/70 hover:bg-slate-800 hover:border-indigo-500 border border-slate-700/80 rounded-2xl p-3.5 text-center transition flex flex-col justify-between items-center group shadow-md active:scale-95">
+                    <span class="text-[10px] font-bold text-indigo-300 uppercase bg-indigo-950/60 px-2 py-0.5 rounded-md border border-indigo-800/50 self-end mb-1">
+                      ${w.type}
+                    </span>
+                    <ruby class="font-hanzi text-2xl sm:text-3xl font-black text-white group-hover:text-cyan-300 transition my-1">
+                      ${w.hz}<rt class="text-indigo-400">${w.py}</rt>
+                    </ruby>
+                    <span class="text-xs font-bold text-slate-300 mt-1">${w.my}</span>
+                    <span class="text-[10px] text-slate-500 mt-1 group-hover:text-indigo-400 flex items-center space-x-1">
+                      <span>🔊</span><span>Sebut</span>
+                    </span>
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        } else if (slide.type === 'grammar') {
+          contentHtml = `
+            <div>
+              <div class="border-b border-slate-800 pb-3 mb-5">
+                <span class="text-xs font-black uppercase tracking-wider text-indigo-400">${slide.tag}</span>
+                <h2 class="text-xl sm:text-2xl font-outfit font-black text-white">${slide.title}</h2>
+              </div>
+
+              <div class="space-y-4">
+                ${slide.patterns.map((p, idx) => `
+                  <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-4 sm:p-5 shadow-md">
+                    <div class="flex items-center justify-between mb-1.5">
+                      <span class="text-xs font-black text-cyan-400 bg-cyan-950/70 px-2.5 py-0.5 rounded-full border border-cyan-800/60">
+                        Pola ${idx + 1}
+                      </span>
+                      <span class="text-xs text-slate-400">${p.explain}</span>
+                    </div>
+                    <div class="text-sm sm:text-base font-bold font-mono text-indigo-200 bg-slate-900/90 px-3 py-2 rounded-xl border border-slate-700/80 my-2">
+                      ${p.formula}
+                    </div>
+                    <!-- Example with Pronounce button -->
+                    <div class="flex items-center justify-between bg-slate-900/50 p-2.5 rounded-xl border border-slate-800">
+                      <div>
+                        <div class="font-hanzi text-lg sm:text-xl font-bold text-white flex items-center space-x-2">
+                          <span>${p.exampleHz}</span>
+                          <span class="text-xs font-sans text-cyan-400 font-semibold">(${p.examplePy})</span>
+                        </div>
+                        <div class="text-xs text-slate-400 mt-0.5">${p.exampleMy}</div>
+                      </div>
+                      <button onclick="speakChinese('${p.exampleHz}')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center space-x-1 active:scale-95 transition shadow-sm">
+                        <span>🔊</span><span>Sebut Ayat</span>
+                      </button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        } else if (slide.type === 'dialogue') {
+          contentHtml = `
+            <div>
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div>
+                  <span class="text-xs font-black uppercase tracking-wider text-indigo-400">${slide.tag}</span>
+                  <h2 class="text-xl sm:text-2xl font-outfit font-black text-white">${slide.title}</h2>
+                </div>
+                <button onclick="playAllDialogue()" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center space-x-1.5 active:scale-95 transition shadow-md shadow-indigo-900/40">
+                  <span>▶️</span><span>Mainkan Semua Dialog</span>
+                </button>
+              </div>
+
+              <!-- Dialogue Lines -->
+              <div class="space-y-3">
+                ${slide.lines.map((l, lIdx) => `
+                  <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between hover:border-slate-600 transition group">
+                    <div class="flex items-center space-x-3.5">
+                      <div class="w-10 h-10 rounded-2xl bg-indigo-900/60 border border-indigo-700/60 text-indigo-300 flex items-center justify-center font-bold text-xs shrink-0">
+                        ${l.speaker.split(' ')[0]}
+                      </div>
+                      <div>
+                        <div class="text-[11px] font-bold text-indigo-400">${l.speaker}</div>
+                        <div class="font-hanzi text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition">
+                          ${l.hz}
+                        </div>
+                        <div class="text-xs font-semibold text-cyan-400">${l.py}</div>
+                        <div class="text-xs text-slate-400 mt-0.5">${l.my}</div>
+                      </div>
+                    </div>
+                    <button onclick="speakChinese('${l.hz}')" class="w-9 h-9 rounded-xl bg-slate-700 group-hover:bg-indigo-600 text-slate-200 group-hover:text-white flex items-center justify-center text-sm font-bold transition shrink-0 ml-3 active:scale-90" title="Dengar sebutan baris ini">
+                      🔊
+                    </button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        } else if (slide.type === 'class_activity') {
+          contentHtml = `
+            <div>
+              <div class="border-b border-slate-800 pb-3 mb-4">
+                <span class="text-xs font-black uppercase tracking-wider text-emerald-400">${slide.tag}</span>
+                <h2 class="text-xl sm:text-2xl font-outfit font-black text-white">${slide.title}</h2>
+                <p class="text-xs text-slate-400 mt-0.5">Guru menanyakan soalan kepada murid, kemudian tekan butang untuk mendedahkan jawapan tepat.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                ${slide.questions.map((item, qIdx) => `
+                  <div class="bg-slate-800/80 border border-slate-700/90 rounded-2xl p-4 flex flex-col justify-between shadow-md">
+                    <div class="font-bold text-white text-sm sm:text-base mb-3 leading-snug">
+                      ${item.q}
+                    </div>
+                    <div>
+                      <div id="ans-box-${qIdx}" class="hidden p-2.5 rounded-xl bg-emerald-950/70 border border-emerald-700/60 text-emerald-300 text-xs sm:text-sm font-bold font-hanzi mb-2">
+                        💡 Jawapan: ${item.a}
+                      </div>
+                      <button onclick="toggleAnswer(${qIdx})" id="ans-btn-${qIdx}" class="w-full py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-bold transition active:scale-95">
+                        👁️ Dedahkan Jawapan
+                      </button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        } else if (slide.type === 'summary') {
+          contentHtml = `
+            <div class="flex flex-col items-center justify-center text-center my-auto py-6">
+              <div class="w-16 h-16 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white text-3xl font-black shadow-xl shadow-emerald-900/40 mb-4 animate-bounce">
+                🎉
+              </div>
+              <span class="text-xs font-black uppercase tracking-wider text-emerald-400 mb-1">${slide.tag}</span>
+              <h2 class="text-3xl sm:text-4xl font-outfit font-black text-white mb-6">${slide.title}</h2>
+
+              <div class="w-full max-w-xl bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 text-left mb-6 shadow-md">
+                <div class="text-xs font-extrabold text-slate-300 uppercase tracking-wider mb-2.5">
+                  📌 KESIMPULAN SESI PEMBELAJARAN HARI INI:
+                </div>
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                  ${slide.points.map(pt => `
+                    <li class="flex items-start space-x-2">
+                      <span class="text-emerald-400 font-bold">✓</span>
+                      <span>${pt}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <!-- CTA: Launch Student Self-Learn App -->
+              <div class="flex flex-wrap items-center justify-center gap-3">
+                <a href="${slide.selfLearnUrl}" class="h-11 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-extrabold text-sm flex items-center space-x-2 shadow-lg shadow-emerald-900/40 active:scale-95 transition">
+                  <span>📱</span>
+                  <span>Mula Latihan Kendiri Murid (20 Soalan & Suara)</span>
+                </a>
+                <button onclick="goToSlide(0)" class="h-11 px-4 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-sm border border-slate-700 active:scale-95 transition">
+                  🔄 Ulang Slaid Dari Mula
+                </button>
+              </div>
+            </div>
+          `;
+        }
+
+        viewport.innerHTML = contentHtml;
+        viewport.classList.remove('slide-enter');
+        viewport.classList.add('slide-active');
+      }, 80);
+    }
+
+    function nextSlide() {
+      if (currentSlideIdx < SLIDES.length - 1) {
+        currentSlideIdx++;
+        renderSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlideIdx > 0) {
+        currentSlideIdx--;
+        renderSlide();
+      }
+    }
+
+    function goToSlide(idx) {
+      if (idx >= 0 && idx < SLIDES.length) {
+        currentSlideIdx = idx;
+        renderSlide();
+      }
+    }
+
+    function toggleAnswer(idx) {
+      const box = document.getElementById(`ans-box-${idx}`);
+      const btn = document.getElementById(`ans-btn-${idx}`);
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        btn.textContent = "🙈 Sembunyikan Jawapan";
+        btn.classList.add('bg-slate-800');
+      } else {
+        box.classList.add('hidden');
+        btn.textContent = "👁️ Dedahkan Jawapan";
+        btn.classList.remove('bg-slate-800');
+      }
+    }
+
+    function playAllDialogue() {
+      const slide = SLIDES[currentSlideIdx];
+      if (slide.type !== 'dialogue') return;
+      let lineIndex = 0;
+      function speakNext() {
+        if (lineIndex < slide.lines.length) {
+          const l = slide.lines[lineIndex];
+          speakChinese(l.hz);
+          lineIndex++;
+          setTimeout(speakNext, 3200);
+        }
+      }
+      speakNext();
+    }
+
+    /* Keyboard Shortcuts */
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+      } else if (e.key.toLowerCase() === 'h') {
+        window.location.href = 'index.html';
+      }
+    });
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSlide();
+    });
+  </script>
+</body>
+</html>

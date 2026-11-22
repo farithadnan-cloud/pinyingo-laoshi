@@ -1,0 +1,13 @@
+# Netlify Configuration for PinyinGo Guru (Classroom Teaching Slides)
+[build]
+  publish = "."
+
+[build.environment]
+  NETLIFY_FEEDBACK_DISABLED = "true"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
