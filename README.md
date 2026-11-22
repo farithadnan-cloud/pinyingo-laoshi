@@ -1,4 +1,4 @@
-# 📽️ PinyinGo Guru - Portal Slaid Pengajaran Bilik Darjah (ELM 4322)
+# 📽️ PinyinGo Laoshi - Portal Slaid Pengajaran Bilik Darjah (ELM 4322)
 
 Aplikasi slaid pembentangan interaktif untuk guru Bahasa Mandarin Kolej Vokasional, direka khas untuk tayangan projektor, *smartboard*, dan skrin TV bilik darjah.
 

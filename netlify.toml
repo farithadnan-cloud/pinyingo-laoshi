@@ -1,4 +1,4 @@
-# Netlify Configuration for PinyinGo Guru (Classroom Teaching Slides)
+# Netlify Configuration for PinyinGo Laoshi (Classroom Teaching Slides)
 [build]
   publish = "."
 
